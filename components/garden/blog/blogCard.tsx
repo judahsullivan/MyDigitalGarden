@@ -12,7 +12,7 @@ import { MagicLink  } from '../../shared/magic';
 import { BsFilePost } from 'react-icons/bs';
 import { item } from '../../animations/motion/transition';
 
-const Index = ({name,description,mainImage, title , href, author}: any) => {
+const Index = ({name,_createdAt,description,mainImage, title , href, author}: any) => {
   return (
   <MotionBox
    variants={item} 
@@ -57,13 +57,22 @@ const Index = ({name,description,mainImage, title , href, author}: any) => {
         bg={useColorModeValue('#f0e7db', '#202023')}
         >
           <Flex
-          justify={'start'}
+          justify={'space-between'}
           w={'100%'}
           align={'center'}
           gap={2}
           >
+          <Flex align={'center'}>
+            
           <Avatar src={author} size={'sm'} />
               <Text  fontSize={'x-small'}>{name}</Text>
+          </Flex>
+          <Flex>
+          <Box fontSize={'md'}>
+          {_createdAt}
+            </Box>
+                              
+          </Flex>
           </Flex>
              <Box
               color={useColorModeValue('#202023', '#f0e7db')}

@@ -1,8 +1,14 @@
+import { MotionBox } from "@/components/animations/motion/motion";
 import PageLayout from "@/components/layouts/pageLayout";
+import { MagicLink } from "@/components/shared/magic";
+import { RichTextComponents } from "@/components/shared/richtextComponent";
 import { client } from "@/lib/sanity.client";
-import { Heading, Image } from "@chakra-ui/react";
+import { Button, Heading, VStack, useColorModeValue } from "@chakra-ui/react";
+import { PortableText } from "@portabletext/react";
 import { GetStaticProps } from "next";
 import { groq } from "next-sanity";
+import { BsBack } from "react-icons/bs";
+import CallToAction from "@/components/shared/CTA";
 
 
 
@@ -72,17 +78,40 @@ type Props = {
 
 
   const Project = ({project}: Props) => {
+  const bg = useColorModeValue('blackAlpha.900','whiteAlpha.700')
+  const color= useColorModeValue('whiteAlpha.700', 'blackAlpha.900')
    if(!project){
     return(
      <Heading>Loading the Project...</Heading> 
     )
    }
     return(
-        <PageLayout title={project.title}>
-        <Heading>{project.title}</Heading>
-        <Image src={project.coverimage.asset.url} />
+    <PageLayout title={project.title}> 
+    <VStack w={'100%'} p={5} align={'start'} textAlign={'center'}>
+    
+    <MagicLink
+     passHref href={'/projects'}>
+       <MotionBox w={'100%'} align={'start'}
+    whileHover={{scale: 1.1}}
+    whileTap={{scale: .9}}
+    >    <Button
+     color={color}
+    bg={bg} 
+     _hover={{
+     color: bg,
+     bg: color,
+    }}
+  
+  aria-label='go back to projects' leftIcon={<BsBack />} >
+    Go back?
+    </Button>
+    </MotionBox>
 
-        </PageLayout>
+    </MagicLink>
+    <PortableText value={project.body}  components={RichTextComponents} />
+    <CallToAction />
+    </VStack>
+    </PageLayout>
     )
 }
 

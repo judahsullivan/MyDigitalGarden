@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import {Box,Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import PageLayout from '@/components/layouts/pageLayout';
 import { fetchPosts } from '@/lib/fetchsSanity';
 import { GardenProps } from '@/utils/interface';
@@ -7,26 +7,27 @@ import BlogIndex from '@/components/garden/blog/blogIndex';
 import Repositories from '@/components/garden/github/repositories';
 import { fetchRecentRepos } from '@/lib/fetchGitHub';
 
-export default function Blog({ posts,repositories }: GardenProps ) {
-  const [activeTab, setActiveTab] = useState('blog');
-
-  const handleTabChange = (tab: any) => {
-    setActiveTab(tab);
-  };
-
+export default function Garden({ posts,repositories }: GardenProps ) {
+const title='My Digital Garden🏡' 
+const subtitle ='This is where all the magic happens✨. Where I Blog✍🏾 and always show whats going on up-to-date ⬆️, in my life whether its programming, or my personal life🙌🏾. Hope you Enjoy!💖 '
+ 
   return (
-    <PageLayout title="Blog">
+    <PageLayout title="🏡Garden">
+    <Stack w={'100%'} spacing={4} textAlign={'start'}>
+    <Box fontSize={'3xl'} textDecoration={'underline'} fontWeight={700}>
+    {title}
+    </Box>
+    <Box>
+      {subtitle}
+    </Box>
+    </Stack>
       <Tabs isLazy>
         <TabList>
           <Tab
-            isSelected={activeTab === 'blog'}
-            onClick={() => handleTabChange('blog')}
           >
             📓Blog
           </Tab>
           <Tab
-            isSelected={activeTab === 'repositories'}
-            onClick={() => handleTabChange('repositories')}
           >
           🧑🏾‍💻Repositories
           </Tab>
@@ -34,10 +35,10 @@ export default function Blog({ posts,repositories }: GardenProps ) {
 
         <TabPanels>
           <TabPanel>
-            {activeTab === 'blog' && <BlogIndex posts={posts} />}
+            <BlogIndex posts={posts} />
           </TabPanel>
           <TabPanel>
-            {activeTab === 'repositories' && <Repositories repositories={repositories}/>}
+             <Repositories repositories={repositories}/>
           </TabPanel>
         </TabPanels>
       </Tabs>

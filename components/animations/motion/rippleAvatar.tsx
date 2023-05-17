@@ -1,10 +1,7 @@
-import { AnimatePresence } from 'framer-motion';
 import { MotionFlex } from './motion';
 import { Box, Image, Skeleton, keyframes, useColorModeValue } from '@chakra-ui/react';
-import { usePalette } from 'react-palette';
 
 export default function AvatarWithRipple({ image }: any) {
-  const {data, loading} = usePalette(image)
   const size = '96px';
   const pulseRing = keyframes`
 	0% {
@@ -54,6 +51,7 @@ export default function AvatarWithRipple({ image }: any) {
             top={0}
             rounded={'full'}
             left={0}
+            alt={"avatar image"}
             fallback={<Skeleton/>}
           />
         </Box>

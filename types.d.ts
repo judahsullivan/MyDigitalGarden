@@ -45,6 +45,7 @@ interface SanityBody {
 }
 
  interface Projects extends SanityBody {
+  body: any;
   _type: 'project';
   id: string;
   title: string;

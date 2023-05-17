@@ -13,7 +13,7 @@ import { usePalette } from 'react-palette'
 import { item } from '../animations/motion/transition'
 import { MotionBox } from '../animations/motion/motion'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { MagicLink } from './magic'
+import { MagicLink } from '../shared/magic'
 
 export default function SkillCard ({ title, image, link, description }: any)  {
   const { data, loading } = usePalette(image)
@@ -61,6 +61,7 @@ export default function SkillCard ({ title, image, link, description }: any)  {
                   <Image
                     src={image}
                     height={26}
+                    alt="image"
                     width={26}
                     rounded="md"
                   />

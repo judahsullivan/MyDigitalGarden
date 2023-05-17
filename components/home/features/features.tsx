@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, chakra, SimpleGrid, Heading, VStack, Container, transition } from '@chakra-ui/react';
+import { Box, chakra, SimpleGrid,useColorModeValue, Heading, VStack, Container, transition, Badge } from '@chakra-ui/react';
 import FeatureCard from './featureCard';
-import { MotionBox,  MotionText } from '@/components/animations/motion/motion';
+import { MotionBox } from '@/components/animations/motion/motion';
 import { fetchFeatures } from '../../../lib/fetchsSanity';
 import {  PageSlideFade, container } from '../../animations/motion/transition';
 
@@ -10,13 +10,16 @@ type FeatureProps = {
 };
 
 export default function Features  ({ features }: FeatureProps)  {
+  const title = "Here is the Technologies Used!"
   return (
     <PageSlideFade>
       <VStack
-      maxW={900}
-       w={'100%'}
-      justify={'center'} align={'center'} >
-        <MotionText
+      w={'100%'}
+      pt={'4rem'}
+      maxW={1000}
+      justify={'center'} 
+      align={'center'} >
+        <MotionBox
           initial={{
             opacity: 0,
             y: 100
@@ -28,12 +31,11 @@ export default function Features  ({ features }: FeatureProps)  {
               duration: .5
             }
           }}
-          fontSize={{ base: 'xl', md: '4xl' }}
-        >
-          Heres a list of
-          <chakra.span p={2}>Technologies</chakra.span>
-          used here!
-        </MotionText>
+          fontSize={{ base: '2xl', md: '4xl' }}
+        >   <Box textAlign={{ base: 'center', md: 'left' }} cursor="pointer">
+                {title}
+                </Box>
+        </MotionBox>
             <MotionBox
           variants={container}
           whileInView={'visible'}

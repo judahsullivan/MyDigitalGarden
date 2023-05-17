@@ -12,8 +12,8 @@ import { SiDevdotto } from 'react-icons/si';
 import { MotionMagicLink  } from '../shared/magic';
 import { RoughNotation } from 'react-rough-notation';
 import { fetchHome } from '@/lib/fetchsSanity';
-import IconList from '../shared/iconlist';
 import AvatarWithRipple from '../animations/motion/rippleAvatar';
+import IconList from '../shared/iconList';
 
 const iconslinks = [
   {
@@ -37,8 +37,10 @@ const iconslinks = [
 ];
 const ANIMATION_DURATION = 0.5;
 const Home = ({home}: any) => {
+const color=useColorModeValue('#f0e7db', '#202023')
+const bg=useColorModeValue('#202023', '#f0e7db')
   return (
-    <MotionBox justify={'center'} minH={'70vh'} justifyContent={'center'} mt={{base: 0, md: '10rem'}}  maxW="7xl" mx={'auto'}>
+    <MotionBox justify={'center'} minH={{base: '' , md: '80vh'}} justifyContent={'center'} pt={{base: 0, md: '6rem'}} mb={5} maxW="7xl" mx={'auto'}>
            {home.map((home: any ) => (
           <Flex align={'center'}  key={home}  direction={['column', 'column', 'row']}>
             <Box m="auto">
@@ -85,8 +87,8 @@ const Home = ({home}: any) => {
                   <Badge
                     rounded={'lg'}
                     fontSize={'2xl'}
-                    color={useColorModeValue('#f0e7db', '#202023')}
-                    bg={useColorModeValue('#202023', '#f0e7db')}
+                    color={color}
+                    bg={bg}
                   >
                     {home.title}
                   </Badge>
@@ -105,7 +107,7 @@ const Home = ({home}: any) => {
                     type={'underline'}
                     animate={true}
                     animationDelay={1200}
-                    color={useColorModeValue('#202023', '#f0e7db')}
+                    color={bg}
                   >
                     {home.role}
                   </RoughNotation>
@@ -115,7 +117,7 @@ const Home = ({home}: any) => {
                     animate={true}
                     animationDelay={1600}
                     padding={4}
-                    color={useColorModeValue('#202023', '#f0e7db')}
+                    color={bg}
                   >
                     {home.specialize}
                   </RoughNotation>
@@ -126,7 +128,7 @@ const Home = ({home}: any) => {
                   fontWeight="400"
                   textAlign={{ base: 'center', md: 'left' }}
                   mt="1rem"
-                  color={useColorModeValue('#202023', '#f0e7db')}
+                  color={bg}
                 >
                   {home.description}
                 </Box>

@@ -18,6 +18,10 @@ import { MagicLink } from '../shared/magic';
 import { BsFillProjectorFill } from 'react-icons/bs';
 
 const ProjectLayoutMed = ({ project }: any) => {
+  
+const dark = useColorModeValue('#f0e7db', '#202023')
+const light = useColorModeValue('#202023', '#f0e7db')
+
   return (
     <Flex
       display={['flex', 'flex', 'none']}
@@ -40,7 +44,7 @@ const ProjectLayoutMed = ({ project }: any) => {
         width={'full'}
         height={'full'}
         position="absolute"
-        bg={useColorModeValue('#202023', 'gray.900')}
+        bg={light}
         opacity={useColorModeValue('0.80', '.5')}
       ></Box>
       <MotionBox
@@ -60,8 +64,8 @@ const ProjectLayoutMed = ({ project }: any) => {
             fontSize="2xl"
             fontWeight="bold"
             rounded={'xl'}
-            bg={useColorModeValue('#202023', '#f0e7db')}
-            color={useColorModeValue('#f0e7db', '#202023')}
+            bg={light}
+            color={dark}
             textAlign={'center'}
             m={2}
             whileHover={{ scaleY: -.5 }}
@@ -72,7 +76,7 @@ const ProjectLayoutMed = ({ project }: any) => {
             <MotionText
               p={2}
               variants={fadeInUp}
-              bg={useColorModeValue('#f0e7db', '#202023')}
+              bg={dark}
               rounded="lg"
               fontWeight={'800'}
               align="left"
@@ -86,12 +90,12 @@ const ProjectLayoutMed = ({ project }: any) => {
               fontSize="xs"
               justifyContent="center"
               mt="1"
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
             >
               {project.techStack.map((s: any, index: any) => (
                 <Badge
-                  color={useColorModeValue('#f0e7db', '#202023')}
-                  bg={useColorModeValue('#202023', '#f0e7db')}
+                  color={dark}
+                  bg={light}
                   key={index}
                   fontSize={'md'}
                   letterSpacing={'tighter'}
@@ -103,11 +107,11 @@ const ProjectLayoutMed = ({ project }: any) => {
             </MotionBox>
           </Box>
           <MotionFlex gap={5} variants={fadeInUp}  mt={1} justify={'start'} >
-            <Link target='_blank' color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
+            <Link target='_blank' color={dark} href={project.gitHub} isExternal>
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
               ml={2}
               href={project.site}
              target='_blank' 
@@ -124,6 +128,8 @@ const ProjectLayoutMed = ({ project }: any) => {
   );
 };
 const LeftProjectLayoutLarge = ({ project }: any) => {
+const dark = useColorModeValue('#f0e7db', '#202023')
+const light = useColorModeValue('#202023', '#f0e7db')
   return (
     <Flex width="full" display={['none', 'none', 'flex']}>
       <MotionBox
@@ -182,7 +188,7 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
           rounded={'lg'}
           opacity={'.8'}
           p={2}
-          bg={useColorModeValue('#202023', '#f0e7db')}
+          bg={light}
           align={'center'}
           variants={stagger}
         >
@@ -190,8 +196,8 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
             <Badge
               rounded={'lg'}
               fontSize={'2xl'}
-              bg={useColorModeValue('#f0e7db', '#202023')}
-              color={useColorModeValue('#202023', '#f0e7db')}
+              bg={dark}
+              color={light}
             >
               {project.title}
             </Badge>
@@ -204,7 +210,7 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
               fontWeight={800}
               p="4"
               fontSize="md"
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
             >
               {project.description}
             </MotionText>
@@ -216,16 +222,16 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
               mt="1"
               gap={2}
               justify={'center'}
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
             >
               {project.techStack.map((s: any, index: any) => (
                 <Badge
                   justifyContent={'center'}
-                  color={useColorModeValue('#202023', '#f0e7db')}
+                  color={light}
                   variant={'solid'}
                   fontSize={'md'}
                   letterSpacing={'tighter'}
-                  bg={useColorModeValue('#f0e7db', '#202023')}
+                  bg={dark}
                   key={index}
                 >
                   {s}
@@ -238,7 +244,7 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
               target='_blank'
               ml={2}
               href={project.site}
@@ -254,6 +260,8 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
 };
 
 const RightProjectLayoutLarge = ({ project }: any) => {
+const dark = useColorModeValue('#f0e7db', '#202023')
+const light = useColorModeValue('#202023', '#f0e7db')
   return (
     <Flex width="full" display={['none', 'none', 'flex']}>
       <MotionBox
@@ -270,7 +278,7 @@ const RightProjectLayoutLarge = ({ project }: any) => {
           rounded={'lg'}
           opacity={'.8'}
           p={2}
-          bg={useColorModeValue('#202023', '#f0e7db')}
+          bg={light}
           align={'center'}
           variants={stagger}
         >
@@ -278,8 +286,8 @@ const RightProjectLayoutLarge = ({ project }: any) => {
             <Badge
               rounded={'lg'}
               fontSize={'2xl'}
-              bg={useColorModeValue('#f0e7db', '#202023')}
-              color={useColorModeValue('#202023', '#f0e7db')}
+              bg={dark}
+              color={light}
             >
               {project.title}
             </Badge>
@@ -291,7 +299,7 @@ const RightProjectLayoutLarge = ({ project }: any) => {
               align="left"
               p="4"
               fontSize="md"
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
             >
               {project.description}
             </MotionText>
@@ -303,16 +311,16 @@ const RightProjectLayoutLarge = ({ project }: any) => {
               mt="1"
               gap={2}
               justify={'center'}
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
             >
               {project.techStack.map((s: any, index: any) => (
                 <Badge
                   justifyContent={'center'}
-                  color={useColorModeValue('#202023', '#f0e7db')}
+                  color={light}
                   variant={'solid'}
                   fontSize={'md'}
                   letterSpacing={'tighter'}
-                  bg={useColorModeValue('#f0e7db', '#202023')}
+                  bg={dark}
                   key={index}
                 >
                   {s}
@@ -322,11 +330,11 @@ const RightProjectLayoutLarge = ({ project }: any) => {
 
             </Box>
           <MotionFlex variants={fadeInUp} pt={2} mt={1} justifyContent="end">
-            <Link target='_blank' color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
+            <Link target='_blank' color={dark} href={project.gitHub} isExternal>
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
-              color={useColorModeValue('#f0e7db', '#202023')}
+              color={dark}
               ml={2}
               href={project.site}
               isExternal

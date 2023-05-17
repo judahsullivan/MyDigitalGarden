@@ -27,7 +27,7 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <MotionBox py={3}  variants={list}  >
+    <MotionBox variants={list}  >
       <VStack
         m={0}
         bg={useColorModeValue('#202023', '#f0e7db')}

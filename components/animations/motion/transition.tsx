@@ -119,38 +119,3 @@ export const CardTransition = ({ children }: Props) => {
   return <MotionBox variants={variants}>{children}</MotionBox>;
 };
 
-export const InViewFade = ({ children }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        } else {
-          setInView(false);
-        }
-      },
-      {
-        rootMargin: '-100px 0px'
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [ref]);
-
-  return (
-    <MotionBox ref={ref} variants={variants} animate={inView ? 'visible' : 'hidden'}>
-      {children}
-    </MotionBox>
-  );
-};

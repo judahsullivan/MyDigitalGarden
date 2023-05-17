@@ -17,7 +17,7 @@ const ThemeToggleButton = () => {
       >
         <IconButton
           size={'md'}
-          color={useColorModeValue('#f0e7db', '#202023')}
+          color={useColorModeValue( '#f0e7db','#202023')}
           aria-label="Toggle theme"
           variant={'ghost'}
           icon={useColorModeValue(<BiSun />, <BiMoon />)}

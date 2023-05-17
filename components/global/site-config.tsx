@@ -13,12 +13,6 @@ const siteConfig = {
         icon: <FaGithub />
       },
       {
-        url: 'https://dev.to/judahsullivan',
-        label: 'Dev Account',
-        type: 'gray',
-        icon: <FaDev />
-      },
-      {
         url: 'https://www.linkedin.com/in/judah-sullivan-899a2511a/',
         label: 'LinkedIn Account',
         type: 'linkedin',

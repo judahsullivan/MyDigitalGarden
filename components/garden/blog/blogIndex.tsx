@@ -6,17 +6,18 @@ import { PageSlideFade, container, fadeInUp } from '../../animations/motion/tran
 import BlogCard from './blogCard';
 
 export default function BlogIndex({ posts }: any) {
+  const title = 'My Blog'
+  const subtitle = 'Here are a list of my Blog post. Where I always comprehensively talk about all that I learn, and my personal life.'
   return (
     <Fragment>
     <PageSlideFade>
         <VStack textAlign={{base: 'center',md: 'left'}} spacing={4}>
         <Box textAlign={'left'} w={'100%'}  fontSize={'3xl'} textTransform={'capitalize'}>
         <Box fontWeight={700} letterSpacing={'widest'}>
-          Welcome to my blog!
+        {title}
         </Box>
           <Box fontSize={'lg'} maxW={'2xl'}>
-          Here is a comprehensive list of my blog articles! ✍️ This is the place where I talk about my journey as an
-          engineer 🚀, also about technology projects and plans ✨!
+          {subtitle}
         </Box>
         </Box>
         </VStack>
@@ -31,6 +32,7 @@ export default function BlogIndex({ posts }: any) {
           name={post.author.name}
           image={post.mainImage.asset.url}
           author={post.author.image.asset.url}
+          _createdAt={post.publishedAt}
           href={`/posts/${post.slug.current}`}
           description={post.description}
           />

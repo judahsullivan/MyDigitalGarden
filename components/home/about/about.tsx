@@ -4,8 +4,10 @@ import { MotionBox, MotionFlex, MotionText } from '../../animations/motion/motio
 import { fetchAbout } from '@/lib/fetchsSanity';
 
 const About = ({ about }: any ) => {
+const color=useColorModeValue('#202023', '#f0e7db')
+const bg= useColorModeValue('#202023', '#f0e7db')
   return (
-    <Container maxW={'5xl'} mt={{base: '2rem' , md: 0}} minH={'lg'}>
+    <Container maxW={'7xl'} mt={{base: '8rem', md: '3rem' }} >
       <MotionBox
         initial={{
           opacity: 0,
@@ -56,7 +58,7 @@ const About = ({ about }: any ) => {
                 }}
                 fontWeight={600}
                 height={{ base: 'auto', md: '257px' }}
-                color={useColorModeValue('#202023', '#f0e7db')}
+                color={color}
                 wordBreak={'keep-all'}
                 fontSize={'lg'}
                 textAlign={'left'}
@@ -95,7 +97,7 @@ const About = ({ about }: any ) => {
                 <Image
                   alt='about image'
                   objectFit={'cover'}
-                  bg={useColorModeValue('#202023', '#f0e7db')}
+                  bg={bg}
                   padding={4}
                   align={'center'}
                   w={'100%'}

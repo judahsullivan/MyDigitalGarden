@@ -1,4 +1,4 @@
-import { Box,Icon,SimpleGrid,Text, VStack } from "@chakra-ui/react";
+import { Box,Icon,SimpleGrid, VStack } from "@chakra-ui/react";
 import { Fragment } from "react";
 import { PageSlideFade, container } from "../../animations/motion/transition";
 import { MotionBox } from "@/components/animations/motion/motion";
@@ -35,6 +35,7 @@ export default function Repositories({repositories}: RepositoryProps){
           <SimpleGrid spacing={2} columns={[1,2,2]}>
            {repositories.map((repository)=>(
             <RepositoryCard 
+            key={repository.id}
             title={repository.name} 
             description={repository.description} 
             url={repository.html_url} 

@@ -3,8 +3,7 @@ import PageLayout from "@/components/layouts/pageLayout";
 import { Divider,Heading, Text, Link, Button, VStack } from "@chakra-ui/react";
 
 
-
-export default function NotFound(){
+ function NotFound( ){
     return(
         <PageLayout title={'Page Not Found'}>
         <VStack spacing={15} h={'420px'} maxH={'full'}>
@@ -22,3 +21,5 @@ export default function NotFound(){
     )
 
 }
+
+export default NotFound;

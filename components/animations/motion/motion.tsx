@@ -46,7 +46,7 @@ export const MotionImage = motion(
     const chakraProps = Object.fromEntries(
       Object.entries(props).filter(([key]) => !isValidMotionProp(key))
     );
-    return <Image ref={ref} fallbackSrc={'/assets/images/placeholder.png'} {...chakraProps} />;
+    return <Image alt="image" ref={ref} fallbackSrc={'/assets/images/placeholder.png'} {...chakraProps} />;
   })
 );
 

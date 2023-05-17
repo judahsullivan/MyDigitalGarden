@@ -6,8 +6,9 @@ import { fetchHome,fetchAbout,fetchFeatures } from "@/lib/fetchsSanity";
 import { HomeProps } from "@/utils/interface";
 
 export default function Index({home,about, features }:HomeProps ){
+  const title ="Home🏠"
   return(
-   <PageLayout title={'Home'}>
+   <PageLayout title={title}>
     <Home home={home} />
     <About about={about}/>
     <Features features={features}/>

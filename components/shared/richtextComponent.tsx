@@ -1,20 +1,19 @@
 import urlFor from '@/lib/urlFor';
-import { Box, Heading, Link as ChakraLink,Image as ChakraImage, List } from '@chakra-ui/react';
-import { MotionBox } from '../animations/motion/motion';
+import { Box,Stack, Link as ChakraLink,Image as ChakraImage, List, Center } from '@chakra-ui/react';
 
 export const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = urlFor(value).toString(); // Convert ImageUrlBuilder to a string URL
+       // Convert ImageUrlBuilder to a string URL
       return (
-        <MotionBox align={'center'}  border={'4px solid'} rounded={'xl'}>
-          <ChakraImage src={imageUrl} alt={''} w={400} height={300}  objectFit={'cover'} />
-        </MotionBox>
+      <Stack w={'100%'}  align={'center'}>
+          <ChakraImage py={2} alt={'image'}   src={urlFor(value).url()}  objectFit={'cover'} />
+      </Stack>
       );
     }, 
     code: ({ value }: any) => {
       return (
-        <Box as="pre">
+        <Box as="pre" >
           <code>{value.code}</code>
         </Box>
       );
@@ -22,39 +21,39 @@ export const RichTextComponents = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <List as="ul" ml={10} py={5} listStyleType="disc" spacing={5}>
+      <List as="ul" textAlign={'start'} ml={10} py={5} listStyleType="disc" spacing={5}>
         {children}
       </List>
     ),
     number: ({ children }: any) => (
-      <Box as="ol" mt="lg" listStyleType="decimal">
+      <List as="ol" textAlign={'start'} mt="lg" listStyleType="decimal">
         {children}
-      </Box>
+      </List>
     ),
   },
   block: {
     h1: ({ children }: any) => (
-      <Heading as="h1" fontSize="5xl" py={10} fontWeight="bold">
+      <Box textAlign={'start'} as="h1" width={'100%'} fontSize="5xl"  fontWeight="900">
         {children}
-      </Heading>
+      </Box>
     ),
     h2: ({ children }: any) => (
-      <Heading as="h2" fontSize="4xl" py={10} fontWeight="bold">
+      <Box textAlign={'start'} as="h2" fontSize="4xl" width={'100%'} py={10} fontWeight="800">
         {children}
-      </Heading>
+      </Box>
     ),
     h3: ({ children }: any) => (
-      <Heading as="h3" fontSize="3xl" py={10} fontWeight="bold">
+      <Box as="h3" fontSize="3xl"textAlign={'start'} py={10} fontWeight="700" width={'100%'}>
         {children}
-      </Heading>
+      </Box>
     ),
     h4: ({ children }: any) => (
-      <Heading as="h4" fontSize="2xl" py={10} fontWeight="bold">
+      <Box as="h4" fontSize="2xl" py={10}textAlign={'start'} fontWeight="600" width={"100%"}>
         {children}
-      </Heading>
-    ),
+      </Box>
+    ), 
     blockquote: ({ children }: any) => (
-      <Box as="blockquote" borderLeft="4px" borderLeftColor="#f7ab0a">
+      <Box as="blockquote"  borderLeft="4px" borderLeftColor="#f7ab0a">
         {children}
       </Box>
     ),

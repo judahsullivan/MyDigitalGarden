@@ -1,7 +1,6 @@
 import { client } from '@/lib/sanity.client';
 import { groq } from 'next-sanity';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { AboutSection } from '@/types';
 
 const query = groq`
 *[_type == "aboutsection"]{

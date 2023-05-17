@@ -12,7 +12,7 @@ const ResumeButton = () => {
   return (
     <>
       <IconButton
-        color={useColorModeValue('#f0e7db', '#202023')}
+        color={useColorModeValue( '#f0e7db','#202023')}
         aria-label="resume download button"
         size={'sm'}
         icon={<FaFolder />}
