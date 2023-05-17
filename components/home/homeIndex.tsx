@@ -1,6 +1,6 @@
 import {
   Flex,
-  Container,
+  Icon,
   Stack,
   Box,
   useColorModeValue,
@@ -13,7 +13,10 @@ import { MotionMagicLink  } from '../shared/magic';
 import { RoughNotation } from 'react-rough-notation';
 import { fetchHome } from '@/lib/fetchsSanity';
 import AvatarWithRipple from '../animations/motion/rippleAvatar';
-import IconList from '../shared/iconList';
+
+
+
+
 
 const iconslinks = [
   {
@@ -166,7 +169,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
             passHref
             whileHover={{scale: 1.11}}
           >
-          <IconList icon={iconLink.icon} />
+          <Icon as={iconLink.icon} />
           </MotionMagicLink>
       ))}
       </MotionBox>
