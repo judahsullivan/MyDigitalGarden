@@ -1,5 +1,4 @@
 import {defineConfig} from 'sanity'
-import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
@@ -13,7 +12,8 @@ export default defineConfig({
   title: 'Judahs Digital Garden Studio',
   projectId,
   dataset,
-  plugins: [deskTool(), visionTool(), vercelDeployTool(),],
+  apiVersion: '2021-10-21',
+  plugins: [deskTool(), visionTool(), ],
   schema: {
     types: schemaTypes,
   },
