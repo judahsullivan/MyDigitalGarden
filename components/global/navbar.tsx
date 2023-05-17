@@ -11,45 +11,40 @@ import {
   useDisclosure,
   Icon,
   Text,
-  Avatar
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { AiFillProfile, AiOutlineGithub, AiTwotoneThunderbolt } from 'react-icons/ai';
+import { AiFillProfile, AiTwotoneThunderbolt } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdTimeline } from 'react-icons/md';
 import ThemeToggleButton from './theme-toggle-button';
 import ResumeButton from './resumebutton';
 import { MagicLink } from '../shared/magic';
 import { MotionMagicLink } from '../shared/magic';
-import { FaDev } from 'react-icons/fa';
-import { BsJournalBookmark } from 'react-icons/bs';
-import SVGLogo from './svglogo';
+import { FaBlog } from 'react-icons/fa';
 import { MotionBox } from '../animations/motion/motion';
 
 const webLinks = [
   { name: 'Projects', path: '/projects' },
   { name: 'Tech-Stack', path: '/techStack' },
-  { name: 'Digital-Garden', path: '/garden' }
+  { name: 'Blog', path: '/blog' }
 ];
 
 const mobileLinks = [
   { name: 'Projects', path: '/projects' },
   { name: 'Tech-Stack', path: '/techStack' },
-  { name: 'Digital-Garden', path: '/Garden' }
+  { name: 'Blog', path: '/blog' }
 ];
 
 interface NavLinkProps {
   index?: number;
   name: string;
   path: string;
-  linkColor: string;
   onClose: () => void;
 }
 
 interface MenuLinkProps {
   name: string;
   path: string;
-  color: string;
   bg: string;
   rPath: string;
   onClose: () => void;
@@ -61,10 +56,10 @@ const MenuLink = (props: MenuLinkProps) => {
   }
 
   const iconsObj: IconsObj = {
-    '/about': <Icon as={AiFillProfile} size={18} color={props.color} />,
-    '/projects': <Icon as={MdTimeline} size={18} color={props.color} />,
-    '/techStack': <Icon as={AiTwotoneThunderbolt} size={18} color={props.color} />,
-    '/': <Icon as={FaDev} size={18} color={props.color} />
+    '/about': <Icon as={AiFillProfile} size={18} />,
+    '/projects': <Icon as={MdTimeline} size={18} />,
+    '/techStack': <Icon as={AiTwotoneThunderbolt} size={18}  />,
+    '/blog': <Icon as={FaBlog} size={18} />
   };
 
   return (
@@ -84,11 +79,11 @@ const NavLink = (props: NavLinkProps) => {
     <MotionMagicLink
       href={props.path}
       px={3}
+      color={useColorModeValue('#f0e7db', '#202023')}
       py={1}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       _hover={{
-        color: useColorModeValue('#202023', 'whiteAlpha.500'),
         borderRadius: 'md'
       }}
     >
@@ -109,23 +104,23 @@ export default function Navbar() {
   const { onClose } = useDisclosure();
 
   const menuProps = {
-    bg: useColorModeValue('gray.200', 'gray.700')
+      bg: useColorModeValue('#f0e7db', '#202023')
   };
   return (
     <MotionBox
       align={'center'}
-      bg={useColorModeValue('whiteAlpha.700', 'blackAlpha.200')}
       px={6}
       boxShadow={'lg'}
+      bg={useColorModeValue('#202023', '#f0e7db')}
+      color={useColorModeValue('#f0e7db', '#202023')}
       position={'fixed'}
+      fontWeight={800}
       p={2}
       zIndex={99}
-      css={{
-        backdropFilter: 'blur(15px)'
-      }}
       w={'100%'}
     >
-      <Flex justify={'space-between'} align={'center'} maxW={'container.lg'} mx={'auto'}>
+      <Flex
+       justify={'space-between'} px={2} align={'center'} maxW={'container.lg'} mx={'auto'}>
         <MotionMagicLink
           href={'/'}
           borderWidth={'2'}
@@ -134,7 +129,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.9 }}
           letterSpacing={'tighter'}
         >
-          Sullivan
+          JSullivan
         </MotionMagicLink>
         <HStack as={'nav'} spacing={3} display={{ base: 'none', md: 'flex' }}>
           {webLinks.map((link, index) => (
@@ -143,28 +138,26 @@ export default function Navbar() {
               name={link.name}
               path={link.path}
               onClose={onClose}
-              linkColor={''}
             />
           ))}
         </HStack>
-        <Flex align={'center'}>
+        <Flex
+        align={'center'} 
+        >
+        
           <Menu autoSelect={false} isLazy>
             {({ isOpen, onClose }) => (
-              <>
+              <Flex  align={"center"} justify={'center'}>
+              <ThemeToggleButton />
+              <ResumeButton />
                 <MenuButton
                   display={{ base: 'inline-block', md: 'none' }}
                   as={Button}
-                  mr={2}
                   variant="options"
-                  color={useColorModeValue('red.500', 'messenger.500')}
-                  size="sm"
-                  alignSelf={'center'}
-                  lineHeight="inherit"
-                  fontSize={'1em'}
-                  rounded={'md'}
+                  mt={1}
+
                 >
                   <Icon
-                    alignSelf={'center'}
                     as={GiHamburgerMenu}
                     transition={'all .25s ease-in-out'}
                     transform={isOpen ? 'rotate(180deg)' : ''}
@@ -174,6 +167,7 @@ export default function Navbar() {
                   zIndex={5}
                   bg={useColorModeValue('rgb(255, 255, 255)', 'rgb(26, 32, 44)')}
                   border="none"
+                  color={useColorModeValue('#202023', '#f0e7db')}
                   boxShadow={useColorModeValue(
                     '2px 4px 6px 2px rgba(160, 174, 192, 0.6)',
                     '2px 4px 6px 2px rgba(9, 17, 28, 0.6)'
@@ -187,17 +181,12 @@ export default function Navbar() {
                       onClose={onClose}
                       bg={menuProps.bg}
                       rPath={router.pathname}
-                      color={''}
                     />
                   ))}
                 </MenuList>
-              </>
+              </Flex>
             )}
           </Menu>
-          <HStack spacing={2}>
-            <ResumeButton />
-            <ThemeToggleButton />
-          </HStack>
         </Flex>
       </Flex>
     </MotionBox>

@@ -1,11 +1,3 @@
-import {
-  AboutSection,
-  FeatureSection,
-  HomePage,
-  Projects,
-  TechStack
-} from '@/types';
-
 export const fetchHome = async () => {
   const res = await fetch(`http://localhost:3000/api/getHome/`);
   const data = await res.json();
@@ -45,4 +37,20 @@ export const fetchProjects = async () => {
   const projects: Projects[] = data.projects;
 
   return projects;
+};
+
+export const fetchPosts = async () => {
+  const res = await fetch(`http://localhost:3000/api/getPosts/`);
+  const data = await res.json();
+  const posts: Post[] = data.posts;
+
+  return posts;
+};
+
+export const fetchPost = async () => {
+  const res = await fetch(`http://localhost:3000/api/getPost/`);
+  const data = await res.json();
+  const post: Post[] = data.post;
+
+  return post;
 };

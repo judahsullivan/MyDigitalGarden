@@ -8,7 +8,7 @@ const dataset  = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 export default defineConfig({
   basePath: "/studio",
-  name: 'Judahs_Digital_Garden_Studio',
+  name: 'Judah_Digital_Studio',
   title: 'Judahs Digital Garden Studio',
   projectId,
   dataset,

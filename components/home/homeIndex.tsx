@@ -1,18 +1,19 @@
 import {
   Flex,
   Container,
-  Avatar,
   Stack,
   Box,
   useColorModeValue,
   Badge,
-  Icon,
 } from '@chakra-ui/react';
 import { MotionBox, MotionFlex } from '../animations/motion/motion';
 import { FiGithub, FiPhone, FiYoutube } from 'react-icons/fi';
 import { SiDevdotto } from 'react-icons/si';
-import { MagicLink  } from '../shared/magic';
+import { MotionMagicLink  } from '../shared/magic';
 import { RoughNotation } from 'react-rough-notation';
+import { fetchHome } from '@/lib/fetchsSanity';
+import IconList from '../shared/iconlist';
+import AvatarWithRipple from '../animations/motion/rippleAvatar';
 
 const iconslinks = [
   {
@@ -35,11 +36,12 @@ const iconslinks = [
   }
 ];
 const ANIMATION_DURATION = 0.5;
-const Home = ({image, title, role, specialize, description}: any) => {
+const Home = ({home}: any) => {
   return (
-    <Container maxW="4xl" minH={'90vh'} mt={{base: '2rem', md: '5rem'}} justifyContent={'center'} mx={'auto'}>
-          <Flex  direction={['column', 'column', 'row']}>
-            <Box m="auto" mb={[16, 16, 'auto']}>
+    <MotionBox justify={'center'} minH={'70vh'} justifyContent={'center'} mt={{base: 0, md: '10rem'}}  maxW="7xl" mx={'auto'}>
+           {home.map((home: any ) => (
+          <Flex align={'center'}  key={home}  direction={['column', 'column', 'row']}>
+            <Box m="auto">
               <MotionBox
                 initial={{
                   opacity: 0,
@@ -53,20 +55,13 @@ const Home = ({image, title, role, specialize, description}: any) => {
                   }
                 }}
                 whileHover={{ scale: 1.2 }}
-                rounded="full"
-                shadow="lg"
               >
-                <Avatar
-                  size="2xl"
-                  showBorder={true}
-                  borderColor={useColorModeValue('#202023', '#f0e7db')}
-                  src={image}
-                />
+              <AvatarWithRipple image={home.image} />
               </MotionBox>
             </Box>
             <MotionFlex
               position="relative"
-              ml={['auto', 'auto', 16]}
+              ml={['auto', 'auto', 14]}
               m={['auto', 'initial']}
               w={['90%', '85%', '80%']}
               maxW="800px"
@@ -93,7 +88,7 @@ const Home = ({image, title, role, specialize, description}: any) => {
                     color={useColorModeValue('#f0e7db', '#202023')}
                     bg={useColorModeValue('#202023', '#f0e7db')}
                   >
-                    {title}
+                    {home.title}
                   </Badge>
                 </Box>
                 <Stack
@@ -112,7 +107,7 @@ const Home = ({image, title, role, specialize, description}: any) => {
                     animationDelay={1200}
                     color={useColorModeValue('#202023', '#f0e7db')}
                   >
-                    {role}
+                    {home.role}
                   </RoughNotation>
                   <RoughNotation
                     show={true}
@@ -122,7 +117,7 @@ const Home = ({image, title, role, specialize, description}: any) => {
                     padding={4}
                     color={useColorModeValue('#202023', '#f0e7db')}
                   >
-                    {specialize}
+                    {home.specialize}
                   </RoughNotation>
                 </Stack>
                 <Box
@@ -133,33 +128,60 @@ const Home = ({image, title, role, specialize, description}: any) => {
                   mt="1rem"
                   color={useColorModeValue('#202023', '#f0e7db')}
                 >
-                  {description}
+                  {home.description}
                 </Box>
               </MotionBox>
             </MotionFlex>
           </Flex>
+           ))} 
      
-      <MotionFlex
-      w={'100%'} 
-      maxW={200}
-      mx={'auto'}
+      <MotionBox
+      display="flex"
+      mt={3}
+      ml={{base: '40px', md:'165px'}}
+      w={'100%'}
+      maxW={250}
+      align={'center'}
+      justify={'center'}
+      initial={{
+        opacity: 0,
+        y: 50
+      }}
+      whileInView={{
+        opacity: 1, 
+        y: 0, 
+        transition:{
+          delay: 1
+        }
+      }}
       >
          {iconslinks.map((iconLink, index) => (
-          <MagicLink
+          <MotionMagicLink
             key={index}
             href={iconLink.link}
             mx={'auto'}
             target={iconLink.target}
             passHref
+            whileHover={{scale: 1.11}}
           >
-            <Icon mt={'2rem'} as={iconLink.icon} />
-          </MagicLink>
+          <IconList icon={iconLink.icon} />
+          </MotionMagicLink>
       ))}
-      </MotionFlex>
+      </MotionBox>
 
-    </Container>
+    </MotionBox>
   );
 };
 
 export default Home;
 
+export async function getStaticProps(){
+  const home = await fetchHome();
+
+
+  return{
+    props:{
+      home
+    }
+  }
+}

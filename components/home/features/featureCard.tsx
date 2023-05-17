@@ -1,4 +1,3 @@
-import { FeatureSection } from '@/types';
 import {
   chakra,
   Heading,
@@ -18,22 +17,25 @@ import {
   ModalFooter,
   useDisclosure,
   Avatar,
-  VStack
+  VStack,
 } from '@chakra-ui/react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { MotionBox } from '../../animations/motion/motion';
+import {list} from '@/components/animations/motion/transition'
 
 const FeatureCard = ({ title, color, image, content, label, href }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
+    <MotionBox py={3}  variants={list}  >
       <VStack
         m={0}
-        color={useColorModeValue('#f0e7db', '#202023')}
         bg={useColorModeValue('#202023', '#f0e7db')}
+        color={useColorModeValue('#f0e7db', '#202023')}
         p={2}
         align={'center'}
         spacing={2}
+        h={180}
         justify={'space-between'}
         maxW={200}
         border={'1px solid '}
@@ -83,7 +85,7 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </MotionBox>
   );
 };
 

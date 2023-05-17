@@ -1,4 +1,3 @@
-import { AboutSection, FeatureSection, HomePage, Projects } from "@/types";
 
 
 
@@ -10,4 +9,17 @@ export interface HomeProps{
 
 export interface ProjectsProps {
   projects: Projects[];
+}
+
+
+export interface GardenProps{
+  repositories: GitHubRepository[];
+  posts: Post[]
+}
+
+
+
+
+export interface RepositoryProps{
+  repositories: GitHubRepository[];
 }

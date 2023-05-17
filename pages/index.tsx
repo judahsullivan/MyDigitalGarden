@@ -1,6 +1,6 @@
-import About from "@/components/home/about";
-import Features from "@/components/home/features";
-import Home from "@/components/home/homeSection";
+import About from "@/components/home/about/about";
+import Features from "@/components/home/features/features";
+import Home from "@/components/home/homeIndex";
 import PageLayout from "@/components/layouts/pageLayout";
 import { fetchHome,fetchAbout,fetchFeatures } from "@/lib/fetchsSanity";
 import { HomeProps } from "@/utils/interface";
@@ -8,12 +8,8 @@ import { HomeProps } from "@/utils/interface";
 export default function Index({home,about, features }:HomeProps ){
   return(
    <PageLayout title={'Home'}>
-   {home.map((home)=>(
-    <Home key={home.id} title={home.title} image={home.image} description={home.description} role={home.role} specialize={home.specialize} />
-   ))}
-    {about.map((about) => (
-      <About key={about._type} title={about.title} image={about.image} description={about.description} />
-    ))}
+    <Home home={home} />
+    <About about={about}/>
     <Features features={features}/>
    </PageLayout> 
   )

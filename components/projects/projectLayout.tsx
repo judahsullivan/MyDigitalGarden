@@ -8,12 +8,14 @@ import {
   Skeleton,
   Badge,
   Link,
-  Icon
+  Icon,
 } from '@chakra-ui/react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { MotionBox, MotionFlex, MotionText } from '../animations/motion/motion';
 import { fadeInUp, stagger } from '../animations/motion/transition';
+import { MagicLink } from '../shared/magic';
+import { BsFillProjectorFill } from 'react-icons/bs';
 
 const ProjectLayoutMed = ({ project }: any) => {
   return (
@@ -23,14 +25,13 @@ const ProjectLayoutMed = ({ project }: any) => {
       borderWidth="1px"
       borderColor={useColorModeValue('gray.600', 'gray.700')}
       w="full"
-      h="20rem"
       textAlign="left"
       align="start"
       shadow="md"
       _hover={{ border: 'md', shadow: 'lg' }}
       overflow="hidden"
       position="relative"
-      bgImage={`url(${project.image})`}
+      bgImage={`url(${project.coverimage.asset.url})`}
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
@@ -58,8 +59,12 @@ const ProjectLayoutMed = ({ project }: any) => {
             variants={fadeInUp}
             fontSize="2xl"
             fontWeight="bold"
+            rounded={'xl'}
+            bg={useColorModeValue('#202023', '#f0e7db')}
             color={useColorModeValue('#f0e7db', '#202023')}
             textAlign={'center'}
+            m={2}
+            whileHover={{ scaleY: -.5 }}
           >
             {project.title}
           </MotionText>
@@ -69,7 +74,7 @@ const ProjectLayoutMed = ({ project }: any) => {
               variants={fadeInUp}
               bg={useColorModeValue('#f0e7db', '#202023')}
               rounded="lg"
-              fontWeight={'600'}
+              fontWeight={'800'}
               align="left"
               fontSize="md"
             >
@@ -79,7 +84,7 @@ const ProjectLayoutMed = ({ project }: any) => {
               variants={fadeInUp}
               display="flex"
               fontSize="xs"
-              justifyContent="start"
+              justifyContent="center"
               mt="1"
               color={useColorModeValue('#f0e7db', '#202023')}
             >
@@ -88,6 +93,8 @@ const ProjectLayoutMed = ({ project }: any) => {
                   color={useColorModeValue('#f0e7db', '#202023')}
                   bg={useColorModeValue('#202023', '#f0e7db')}
                   key={index}
+                  fontSize={'md'}
+                  letterSpacing={'tighter'}
                   ml={2}
                 >
                   {s}
@@ -95,18 +102,21 @@ const ProjectLayoutMed = ({ project }: any) => {
               ))}
             </MotionBox>
           </Box>
-          <MotionFlex variants={fadeInUp} pt={2} mt={1} justifyContent="start">
-            <Link color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
+          <MotionFlex gap={5} variants={fadeInUp}  mt={1} justify={'start'} >
+            <Link target='_blank' color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
               color={useColorModeValue('#f0e7db', '#202023')}
               ml={2}
               href={project.site}
-              isExternal
+             target='_blank' 
             >
               <Icon rounded="full" aria-label="medal" as={HiOutlineExternalLink} />
             </Link>
+            <MagicLink href={`/projects/${project.slug.current}`} color={useColorModeValue('#f0e7db', '#202023')} >
+              <Icon rounded="full" aria-label="project" as={BsFillProjectorFill} />
+            </MagicLink>
           </MotionFlex>
         </MotionBox>
       </MotionBox>
@@ -141,10 +151,10 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
         overflow="hidden"
         position="relative"
       >
-        <a href={project.site} target="_blank" rel="noopener noreferrer">
+        <MagicLink passHref href={`/projects/${project.slug.current}`} aria-label='blog post'  rel="noopener noreferrer">
           <AspectRatio ratio={1.85 / 1} w="100%" h="100%" rounded="xl">
             <Image
-              src={project.image}
+              src={project.coverimage.asset.url}
               fallback={<Skeleton />}
               width={'full'}
               height={'full'}
@@ -156,7 +166,7 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
               _hover={{ opacity: 1 }}
             />
           </AspectRatio>
-        </a>
+        </MagicLink>
       </MotionBox>
       <MotionBox
         initial="initial"
@@ -191,39 +201,45 @@ const LeftProjectLayoutLarge = ({ project }: any) => {
               variants={fadeInUp}
               rounded="lg"
               align="left"
+              fontWeight={800}
               p="4"
               fontSize="md"
-              c
               color={useColorModeValue('#f0e7db', '#202023')}
             >
               {project.description}
             </MotionText>
-            <MotionBox
+            <MotionFlex
               variants={fadeInUp}
               display="flex"
               fontSize="xs"
-              justifyContent="start"
+              w={'100%'}
               mt="1"
+              gap={2}
+              justify={'center'}
               color={useColorModeValue('#f0e7db', '#202023')}
             >
               {project.techStack.map((s: any, index: any) => (
                 <Badge
-                  color={useColorModeValue('#f0e7db', '#202023')}
-                  bg={useColorModeValue('#202023', '#f0e7db')}
+                  justifyContent={'center'}
+                  color={useColorModeValue('#202023', '#f0e7db')}
+                  variant={'solid'}
+                  fontSize={'md'}
+                  letterSpacing={'tighter'}
+                  bg={useColorModeValue('#f0e7db', '#202023')}
                   key={index}
-                  ml={2}
                 >
                   {s}
                 </Badge>
               ))}
-            </MotionBox>
+            </MotionFlex>
           </Box>
           <MotionFlex variants={fadeInUp} pt={2} mt={1} justifyContent="start">
-            <Link color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
+            <Link target='_blank' color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
               color={useColorModeValue('#f0e7db', '#202023')}
+              target='_blank'
               ml={2}
               href={project.site}
               isExternal
@@ -275,26 +291,38 @@ const RightProjectLayoutLarge = ({ project }: any) => {
               align="left"
               p="4"
               fontSize="md"
-              c
               color={useColorModeValue('#f0e7db', '#202023')}
             >
               {project.description}
             </MotionText>
-            <MotionBox variants={fadeInUp} display="flex" fontSize="xs" align={'center'} mt="1">
+            <MotionFlex
+              variants={fadeInUp}
+              display="flex"
+              fontSize="xs"
+              w={'100%'}
+              mt="1"
+              gap={2}
+              justify={'center'}
+              color={useColorModeValue('#f0e7db', '#202023')}
+            >
               {project.techStack.map((s: any, index: any) => (
                 <Badge
-                  bg={useColorModeValue('#f0e7db', '#202023')}
+                  justifyContent={'center'}
                   color={useColorModeValue('#202023', '#f0e7db')}
+                  variant={'solid'}
+                  fontSize={'md'}
+                  letterSpacing={'tighter'}
+                  bg={useColorModeValue('#f0e7db', '#202023')}
                   key={index}
-                  ml={2}
                 >
                   {s}
                 </Badge>
               ))}
-            </MotionBox>
-          </Box>
+            </MotionFlex>
+
+            </Box>
           <MotionFlex variants={fadeInUp} pt={2} mt={1} justifyContent="end">
-            <Link color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
+            <Link target='_blank' color={useColorModeValue('#f0e7db', '#202023')} href={project.gitHub} isExternal>
               <Icon rounded="full" aria-label="medal" as={AiOutlineGithub} />
             </Link>
             <Link
@@ -302,6 +330,7 @@ const RightProjectLayoutLarge = ({ project }: any) => {
               ml={2}
               href={project.site}
               isExternal
+              target='_blank'
             >
               <Icon rounded="full" aria-label="medal" as={HiOutlineExternalLink} />
             </Link>
@@ -333,11 +362,11 @@ const RightProjectLayoutLarge = ({ project }: any) => {
         overflow="hidden"
         position="relative"
       >
-        <a href={project.site} target="_blank" rel="noopener noreferrer">
+        <MagicLink passHref href={`/projects/${project.slug.current}`} aria-label='blog post'  rel="noopener noreferrer">
           <AspectRatio ratio={1.85 / 1} w="100%" h="100%" rounded="xl">
             <Image
               alt={'project-imageright'}
-              src={project.image}
+              src={project.coverimage.asset.url}
               fallback={<Skeleton />}
               width={'full'}
               height={'full'}
@@ -348,7 +377,7 @@ const RightProjectLayoutLarge = ({ project }: any) => {
               _hover={{ opacity: 1 }}
             />
           </AspectRatio>
-        </a>
+        </MagicLink>
       </MotionBox>
     </Flex>
   );

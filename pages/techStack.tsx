@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { GrTechnology } from 'react-icons/gr';
 import { MdDesignServices, MdDeveloperMode, MdLanguage } from 'react-icons/md';
 import {
-  Container,
   Text,
   TabPanel,
   Heading,
@@ -17,11 +16,12 @@ import {
   SimpleGrid,
   useColorModeValue
 } from '@chakra-ui/react';
-import SkillCard from '@/components/stack/stackCard';
-import { TechStack } from '@/types';
+import SkillCard from '@/components/shared/stackCard';
 import PageLayout from '@/components/layouts/pageLayout';
 import { FaToolbox } from 'react-icons/fa';
 import { fetchTechStack } from '@/lib/fetchsSanity';
+import {  PageSlideFade , container} from '@/components/animations/motion/transition';
+import { MotionBox } from '@/components/animations/motion/motion';
 
 interface TechStackProps {
   techstacks: TechStack[];
@@ -29,15 +29,15 @@ interface TechStackProps {
 
 const TechStack = ({ techstacks }: TechStackProps) => {
   const [activeType, setActiveType] = useState('All');
-
   let types = ['All'];
   if (techstacks) {
-    types = [...new Set([...types, ...techstacks.map((tech) => tech.type)])];
+    const techTypes = techstacks.map((tech) => tech.type);
+    types = [...new Set([...types, ...techTypes])];
   }
-
+  
   return (
     <PageLayout title={'Tech-Stack'}>
-      <Container maxW={'5xl'}>
+      <PageSlideFade>
         <VStack>
           <Heading>TechStack</Heading>
           <Text>Here here is a list of technologies i love to use</Text>
@@ -72,6 +72,7 @@ const TechStack = ({ techstacks }: TechStackProps) => {
                         ? FaToolbox
                         : FaToolbox
                     }
+                    
                   />
                   <Text>{type}</Text>
                 </HStack>
@@ -82,26 +83,30 @@ const TechStack = ({ techstacks }: TechStackProps) => {
             {types &&
               types.map((type) => (
                 <TabPanel key={type}>
-                  <Box>
-                    <SimpleGrid columns={[1, 2, 3]} spacing={4}>
+                  <MotionBox
+                  variants={container} initial={'hidden'} whileInView={'visible'}
+                    w={"full"}  mx={'auto'}> 
+                    <SimpleGrid 
+                     columns={[1,2,3]}
+                      spacing={2}> 
                       {techstacks
                         .filter((tech) => activeType === 'All' || tech.type === type)
                         .map((techstack, index) => (
-                          <SkillCard
+                        <SkillCard
                             key={index}
                             title={techstack.title}
                             description={techstack.description}
                             link={techstack.link}
                             image={techstack.image}
                           />
-                        ))}
+                      ))}
                     </SimpleGrid>
-                  </Box>
+                  </MotionBox>
                 </TabPanel>
               ))}
           </TabPanels>
         </Tabs>
-      </Container>
+        </PageSlideFade>
     </PageLayout>
   );
 };

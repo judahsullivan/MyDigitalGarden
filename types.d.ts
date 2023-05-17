@@ -6,7 +6,7 @@ interface SanityBody {
   _updatedAt: string;
 }
 
-export interface HomePage extends SanityBody {
+ interface HomePage extends SanityBody {
   id: Key | null | undefined;
   _type: 'homepage';
   title: string;
@@ -16,7 +16,7 @@ export interface HomePage extends SanityBody {
   image: string;
 }
 
-export interface AboutSection extends SanityBody {
+ interface AboutSection extends SanityBody {
   id: Key | null | undefined;
   _type: 'aboutsection';
   title: string;
@@ -24,7 +24,7 @@ export interface AboutSection extends SanityBody {
   image: string;
 }
 
-export interface FeatureSection extends SanityBody {
+ interface FeatureSection extends SanityBody {
   [x: string]: Key | null | undefined;
   _type: 'features';
   title: string;
@@ -35,7 +35,7 @@ export interface FeatureSection extends SanityBody {
   color: string;
 }
 
-export interface TechStack extends SanityBody {
+ interface TechStack extends SanityBody {
   _type: 'techstack';
   title: string;
   description: string;
@@ -44,17 +44,19 @@ export interface TechStack extends SanityBody {
   image: string;
 }
 
-export interface Projects extends SanityBody {
+ interface Projects extends SanityBody {
   _type: 'project';
   id: string;
   title: string;
   description: string;
-  image: string[];
+  coverimage: Image;
   techStack: string[];
   site: string;
+  block: Block[];
+  slug: Slug;
 }
 
-export interface GitHubRepository {
+ interface GitHubRepository {
   [x: string]: string;
   html_url: string;
   stargazers_count: number;
@@ -62,11 +64,74 @@ export interface GitHubRepository {
   id: number;
   name: string;
   description: string;
-  uerProfile: string;
+  userProfile: string;
   language: string;
   isPublic: boolean;
   isTemplate: boolean;
   language?: string;
   stars: number;
 }
+interface Post extends Base {
+  author: Author;
+  body: Block[];
+  categories: Category[];
+  mainImage: Image;
+  slug: Slug;
+  title: string;
+  description: string;
+}
 
+interface Author extends Base {
+  bio: Block[];
+  image: Image;
+  name: string;
+  slug: Slug;
+}
+
+interface Image {
+  url(): any;
+  _type: "image";
+  asset: Reference;
+}
+
+interface Reference {
+  [x: string]: string | undefined;
+  _ref: "string";
+  _type: "reference";
+}
+
+interface Slug {
+  _type: "slug";
+  current: string;
+}
+
+interface Block {
+  _key: string;
+  _type: "block";
+  children: Span[];
+  markDefs: any[];
+  style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  split: (separator: string | RegExp) => string[];
+}
+
+interface Span {
+  _key: string;
+  _type: "span";
+  marks: string[];
+  text: string;
+}
+
+interface Category extends Base {
+  description: string;
+  title: string;
+}
+
+interface MainImage {
+  _type: "image";
+  asset: Reference;
+}
+
+interface Title {
+  _type: "string";
+  current: string;
+}

@@ -1,8 +1,10 @@
 import { AnimatePresence } from 'framer-motion';
 import { MotionFlex } from './motion';
-import { Box, Image, keyframes, useColorModeValue } from '@chakra-ui/react';
+import { Box, Image, Skeleton, keyframes, useColorModeValue } from '@chakra-ui/react';
+import { usePalette } from 'react-palette';
 
 export default function AvatarWithRipple({ image }: any) {
+  const {data, loading} = usePalette(image)
   const size = '96px';
   const pulseRing = keyframes`
 	0% {
@@ -18,19 +20,12 @@ export default function AvatarWithRipple({ image }: any) {
 	`;
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
       <MotionFlex
         justifyContent="center"
         alignItems="center"
         h="216px"
         w="full"
-        overflow="hidden"
         style={{ display: 'inline-block' }}
-        key={useColorModeValue('light', 'dark')}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        transition={{ duration: 0.2 }}
       >
         {/* Ideally, only the box should be used. The <Flex /> is used to style the preview. */}
         <Box
@@ -48,19 +43,20 @@ export default function AvatarWithRipple({ image }: any) {
             marginLeft: '-100%',
             marginTop: '-100%',
             borderRadius: '50%',
+            bg: useColorModeValue('#202023', '#f0e7db'),
             animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`
           }}
         >
           <Image
             src={image}
+            bg={ useColorModeValue('#202023', '#f0e7db')}
             position="absolute"
             top={0}
             rounded={'full'}
             left={0}
-            fallbackSrc="/assets/images/placeholder.png"
+            fallback={<Skeleton/>}
           />
         </Box>
       </MotionFlex>
-    </AnimatePresence>
   );
 }

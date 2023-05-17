@@ -1,6 +1,5 @@
 import { groq } from 'next-sanity';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { FeatureSection } from '@/types';
 import { client } from '@/lib/sanity.client';
 
 const query = groq`

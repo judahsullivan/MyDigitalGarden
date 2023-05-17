@@ -10,11 +10,12 @@ import {
   Flex,
   Tooltip,
   Stack,
-  Avatar
 } from '@chakra-ui/react';
 // Here we have used react-icons package for the icons
 import { BiGitRepoForked, BiStar } from 'react-icons/bi';
 import { FiGithub } from 'react-icons/fi';
+import { MotionBox } from '@/components/animations/motion/motion';
+import { item } from '@/components/animations/motion/transition';
 
 interface RepositoryCardProps {
   title: string;
@@ -36,7 +37,7 @@ const languageColors: Record<string, string> = {
 };
 
 const RepositoryCard = (props: RepositoryCardProps) => {
-  const { title, forks_count, userProfile, description, language, url, stargazers_count } = props;
+  const { title, forks_count , description, language, url, stargazers_count } = props;
 
   const handleLinkClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>, link: string) => {
     window.open(link);
@@ -44,7 +45,9 @@ const RepositoryCard = (props: RepositoryCardProps) => {
   };
 
   return (
-    <Box
+    <MotionBox
+      variants={item}
+     
       py={1}
       px={[1, 2]}
       w={'100%'}
@@ -52,6 +55,8 @@ const RepositoryCard = (props: RepositoryCardProps) => {
       rounded="xl"
       borderWidth="1px"
       maxW={'md'}
+       bg={useColorModeValue('#202023', '#f0e7db')}
+       color={useColorModeValue('#f0e7db', '#202023')}
       borderColor={useColorModeValue('gray.100', 'gray.700')}
       _hover={{
         shadow: 'lg',
@@ -68,7 +73,6 @@ const RepositoryCard = (props: RepositoryCardProps) => {
             <Tooltip hasArrow label="Github link" placement="top">
               <HStack cursor="pointer">
                 <Icon as={FiGithub} boxSize="0.9em" mt="1px" />
-                <Avatar src={userProfile} size={'sm'} />
               </HStack>
             </Tooltip>
             <Flex alignItems="center" _hover={{ color: 'blue.500' }}>
@@ -99,7 +103,7 @@ const RepositoryCard = (props: RepositoryCardProps) => {
           <Icon as={BiGitRepoForked}>{forks_count}</Icon>
         </Flex>
       </Stack>
-    </Box>
+    </MotionBox>
   );
 };
 

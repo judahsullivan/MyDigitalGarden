@@ -6,7 +6,14 @@ const query = groq`
 *[_type == "project"]{
   title,
   description,
-  "image": image.asset -> url,
+  slug,
+  body,
+  coverimage{
+    asset->{
+      url,
+      _id,
+    },
+  },
   techStack[],
   site,
 }

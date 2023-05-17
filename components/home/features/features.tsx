@@ -1,19 +1,22 @@
 import React from 'react';
 import { Box, chakra, SimpleGrid, Heading, VStack, Container, transition } from '@chakra-ui/react';
-import FeatureCard from '../shared/featureCard';
-import { FeatureSection } from '@/types';
+import FeatureCard from './featureCard';
 import { MotionBox,  MotionText } from '@/components/animations/motion/motion';
-import { fetchFeatures } from '../../lib/fetchsSanity';
+import { fetchFeatures } from '../../../lib/fetchsSanity';
+import {  PageSlideFade, container } from '../../animations/motion/transition';
+
 type FeatureProps = {
-  features: FeatureSection[] | null;
+  features: FeatureSection[] 
 };
-const Features = ({ features }: FeatureProps) => {
+
+export default function Features  ({ features }: FeatureProps)  {
   return (
-    <Box maxW={'4xl'}>
-      <VStack mt={'4rem'} align={'center'}>
+    <PageSlideFade>
+      <VStack
+      maxW={900}
+       w={'100%'}
+      justify={'center'} align={'center'} >
         <MotionText
-          w={'100%'}
-          m={0}
           initial={{
             opacity: 0,
             y: 100
@@ -22,33 +25,23 @@ const Features = ({ features }: FeatureProps) => {
             opacity: 1,
             y: 0,
             transition: {
-              duration: 1
+              duration: .5
             }
           }}
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{ base: 'xl', md: '4xl' }}
         >
-          Heres the
+          Heres a list of
           <chakra.span p={2}>Technologies</chakra.span>
-          used!
+          used here!
         </MotionText>
-        <MotionBox
-          initial={{
-            opacity: 0,
-            y: 150
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 1,
-              delay: 1
-            }
-          }}
-        >
-          <SimpleGrid pt={4} columns={[2, 3]} spacing={2}>
-            {features &&
-              features.map((feature, index) => (
-                <FeatureCard
+            <MotionBox
+          variants={container}
+          whileInView={'visible'}
+          initial={'hidden'}
+          >
+        <SimpleGrid columns={[2, 3]} spacing={2}>
+           {features.map((feature,index) => ( 
+               <FeatureCard
                   key={index}
                   color={feature.color}
                   title={feature.title}
@@ -58,15 +51,12 @@ const Features = ({ features }: FeatureProps) => {
                   image={feature.image}
                 />
               ))}
-          </SimpleGrid>
+        </SimpleGrid>
         </MotionBox>
       </VStack>
-    </Box>
+    </PageSlideFade>
   );
 };
-
-export default Features;
-
 
 export async function getStaticProps(){
   const features = await fetchFeatures()

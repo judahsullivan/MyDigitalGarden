@@ -1,10 +1,11 @@
 import { Box, Container, Badge, Image, useColorModeValue, Stack } from '@chakra-ui/react';
 import React from 'react';
-import { MotionBox, MotionFlex, MotionText } from '../animations/motion/motion';
+import { MotionBox, MotionFlex, MotionText } from '../../animations/motion/motion';
+import { fetchAbout } from '@/lib/fetchsSanity';
 
-const About = ({ title, description, image }: any ) => {
+const About = ({ about }: any ) => {
   return (
-    <Container maxW={'5xl'} id="about-section">
+    <Container maxW={'5xl'} mt={{base: '2rem' , md: 0}} minH={'lg'}>
       <MotionBox
         initial={{
           opacity: 0,
@@ -13,12 +14,11 @@ const About = ({ title, description, image }: any ) => {
         whileInView={{
           opacity: 1,
           scale: 1,
-
           transition: {
             duration: 1,
             type: 'spring',
             stiffness: 250
-          }
+          },
         }}
       >
         <Badge
@@ -32,7 +32,9 @@ const About = ({ title, description, image }: any ) => {
           Heres a little about me!
         </Badge>
       </MotionBox>
-          <Stack
+           {about.map((about: any,index: any)=>(
+           <Stack
+            key={index}
             align={'center'}
             spacing={{ base: 3, md: 10 }}
             py={{ base: 6, md: 8 }}
@@ -59,7 +61,7 @@ const About = ({ title, description, image }: any ) => {
                 fontSize={'lg'}
                 textAlign={'left'}
               >
-                {description}
+               {about.description}
               </MotionText>
               <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}></Stack>
             </Stack>
@@ -91,20 +93,31 @@ const About = ({ title, description, image }: any ) => {
                 overflow={'hidden'}
               >
                 <Image
-                  alt={title}
-                  fit={'cover'}
+                  alt='about image'
+                  objectFit={'cover'}
                   bg={useColorModeValue('#202023', '#f0e7db')}
                   padding={4}
                   align={'center'}
                   w={'100%'}
                   h={'100%'}
-                  src={image}
+                  src={about.image}
                 />
               </Box>
             </MotionFlex>
           </Stack>
+           ))} 
     </Container>
   );
 };
 
 export default About;
+export async function getStaticProps(){
+  const about = await fetchAbout();
+
+
+  return{
+    props:{
+      about
+    }
+  }
+}

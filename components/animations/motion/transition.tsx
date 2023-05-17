@@ -63,7 +63,7 @@ export const fadeInUp = {
 };
 
 export const container = {
-  hidden: { opacity: 1, scale: 0 },
+  initial: { opacity: 0, scale: 0 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -74,12 +74,23 @@ export const container = {
   }
 };
 
+export const list = {
+  hidden: { translateX: 150, opacity: 0 },
+  visible: {
+    translateX: 0,
+    opacity: 1,
+    
+  }
+}
+
 export const item = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
-    opacity: 1
+    opacity: 1,
+    
   }
+
 };
 
 interface Props {
