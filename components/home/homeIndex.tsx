@@ -38,6 +38,20 @@ const iconslinks = [
     link: '/blog'
   }
 ];
+
+
+
+export async function getStaticProps(){
+  const home = await fetchHome();
+
+
+  return{
+    props:{
+      home
+    },
+    revalidate: 3000 * 3000
+  }
+}
 const ANIMATION_DURATION = 0.5;
 const Home = ({home}: any) => {
 const color=useColorModeValue('#f0e7db', '#202023')
@@ -180,13 +194,3 @@ const bg=useColorModeValue('#202023', '#f0e7db')
 
 export default Home;
 
-export async function getStaticProps(){
-  const home = await fetchHome();
-
-
-  return{
-    props:{
-      home
-    }
-  }
-}

@@ -6,6 +6,18 @@ import { ProjectLayoutMed, LeftProjectLayoutLarge, RightProjectLayoutLarge } fro
 
 
 
+export async function getStaticProps(){
+  const projects = await fetchProjects();
+  
+  return{
+    props: {
+      projects
+    },
+    revalidate: 3000 * 3000
+  }
+} 
+
+
 
 export default function ProjectIndex({projects}: any ){
     return(
@@ -27,14 +39,3 @@ export default function ProjectIndex({projects}: any ){
     )
 }
 
-
-
-export async function getStaticProps(){
-  const projects = await fetchProjects();
-  
-  return{
-    props: {
-      projects
-    }
-  }
-} 

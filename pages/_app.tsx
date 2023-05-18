@@ -8,13 +8,13 @@ import {theme} from '@/theme/theme'
 import { FontsGlobal } from '@/theme/fonts'
 
 
-if (typeof window !== 'undefined') {
-  window.history.scrollRestoration = 'manual'
-}
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   
+if (typeof window !== 'undefined') {
+  window.history.scrollRestoration = 'manual'
+}
   return(
     <ChakraProvider theme={theme}>
       <FontsGlobal />
@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
       >
       <Box key={router.route}>
-    <Component {...pageProps} />
+      <Component {...pageProps} />
       </Box>
       </AnimatePresence>
      

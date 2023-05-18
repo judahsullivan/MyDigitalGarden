@@ -10,6 +10,16 @@ interface TechStackProps {
   techstacks: TechStack[];
 }
 
+export async function getStaticProps(){
+  const techstacks = await fetchTechStack();
+
+  return {
+    props: {
+      techstacks
+    },
+    revalidate: 3600
+  };
+}
 const TechStack = ({ techstacks }: TechStackProps) => {
  const title = 'TechStack⚙️' 
  const subtitle = "Here are all the technologies I have learned on my Journey to Full Stack!📚 I Make it my goal to learn and gain as much knowledge as possible!🧠 "
@@ -28,15 +38,6 @@ const TechStack = ({ techstacks }: TechStackProps) => {
   );
 };
 
+
+
 export default TechStack;
-
-export async function getStaticProps(){
-  const techstacks = await fetchTechStack();
-
-  return {
-    props: {
-      techstacks
-    },
-    revalidate: 3600
-  };
-};

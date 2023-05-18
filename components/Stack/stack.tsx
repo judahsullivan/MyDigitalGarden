@@ -25,6 +25,17 @@ interface TechStackProps {
   techstacks: TechStack[];
 }
 
+export async function getStaticProps(){
+  const techstacks = await fetchTechStack();
+
+  return {
+    props: {
+      techstacks
+    },
+    revalidate: 3600
+  };
+};
+
 export default function Stack({ techstacks }: TechStackProps) {
 const color=useColorModeValue('#f0e7db', '#202023')
 const bg=useColorModeValue('#202023', '#f0e7db')
@@ -109,13 +120,3 @@ const bg=useColorModeValue('#202023', '#f0e7db')
 };
 
 
-export async function getStaticProps(){
-  const techstacks = await fetchTechStack();
-
-  return {
-    props: {
-      techstacks
-    },
-    revalidate: 3600
-  };
-};

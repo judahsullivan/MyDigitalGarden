@@ -3,7 +3,23 @@ import React from 'react';
 import { MotionBox, MotionFlex, MotionText } from '../../animations/motion/motion';
 import { fetchAbout } from '@/lib/fetchsSanity';
 
-const About = ({ about }: any ) => {
+
+
+
+
+export async function getStaticProps(){
+  const about = await fetchAbout();
+
+
+  return{
+    props:{
+      about
+    },
+    revalidate: 3000*3000
+  }
+}
+
+export default function  About  ({ about }: any )  {
 const color=useColorModeValue('#202023', '#f0e7db')
 const bg= useColorModeValue('#202023', '#f0e7db')
   return (
@@ -111,15 +127,3 @@ const bg= useColorModeValue('#202023', '#f0e7db')
     </Container>
   );
 };
-
-export default About;
-export async function getStaticProps(){
-  const about = await fetchAbout();
-
-
-  return{
-    props:{
-      about
-    }
-  }
-}

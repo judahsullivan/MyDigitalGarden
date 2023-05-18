@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, chakra, SimpleGrid,useColorModeValue, Heading, VStack, Container, transition, Badge } from '@chakra-ui/react';
+import { Box, SimpleGrid,VStack } from '@chakra-ui/react';
 import FeatureCard from './featureCard';
 import { MotionBox } from '@/components/animations/motion/motion';
 import { fetchFeatures } from '../../../lib/fetchsSanity';
@@ -9,7 +9,22 @@ type FeatureProps = {
   features: FeatureSection[] 
 };
 
-export default function Features  ({ features }: FeatureProps)  {
+export async function getStaticProps(){
+  const features = await fetchFeatures()
+  
+  return{
+    props:{
+      features
+
+    },
+    revalidate: 3000 * 3000
+    
+
+  }
+}
+const Features  = ({ features }: FeatureProps) => {
+
+
   const title = "Here is the Technologies Used!"
   return (
     <PageSlideFade>
@@ -60,12 +75,5 @@ export default function Features  ({ features }: FeatureProps)  {
   );
 };
 
-export async function getStaticProps(){
-  const features = await fetchFeatures()
-  
-  return{
-    props:{
-      features
-    }
-  }
-}
+
+export default Features

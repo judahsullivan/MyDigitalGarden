@@ -1,56 +1,123 @@
-export const fetchHome = async () => {
-  const res = await fetch(`http://localhost:3000/api/getHome/`);
-  const data = await res.json();
-  const home: HomePage[] = data.home; // Wrap the single home object in an array
+import { client } from '@/lib/sanity.client';
+import { groq } from 'next-sanity';
 
+const fetchHome = async () => {
+  const query = groq`
+    *[_type == "home"] {
+     title,
+      role,
+      "image": image.asset -> url,
+      description,
+      specialize
+
+    }
+  `;
+  
+  const home: HomePage[] = await client.fetch(query);
   return home;
 };
 
-export const fetchAbout = async () => {
-  const res = await fetch(`http://localhost:3000/api/getAbouts/`);
-  const data = await res.json();
-  const about: AboutSection[] = data.about; // wrap around the about section
-
+const fetchAbout = async () => {
+  const query = groq`
+    *[_type == "aboutsection"] {
+      title,
+      role,
+      "image": image.asset -> url,
+      description
+    }
+  `;
+  
+  const about: AboutSection[] = await client.fetch(query);
   return about;
 };
 
-export const fetchFeatures = async () => {
-  const res = await fetch(`http://localhost:3000/api/getFeatures/`);
-  const data = await res.json();
-  const features: FeatureSection[] = data.features; // wrap around the Features Card
-
+const fetchFeatures = async () => {
+  const query = groq`
+    *[_type == "features"] {
+      title,
+      content,
+      label,
+      href,
+      "image": image.asset -> url,
+      color
+    }
+  `;
+  
+  const features: FeatureSection[] = await client.fetch(query);
   return features;
 };
 
-export const fetchTechStack = async () => {
-  const res = await fetch(`http://localhost:3000/api/getTechStack/`);
-  const data = await res.json();
-  const techstacks: TechStack[] = data.techstacks;
-
+const fetchTechStack = async () => {
+  const query = groq`
+    *[_type == "techstack"] {
+      title,
+      description,
+      "image": image.asset -> url,
+      link,
+      type
+    }
+  `;
+  
+  const techstacks: TechStack[] = await client.fetch(query);
   return techstacks;
 };
 
-
-export const fetchProjects = async () => {
-  const res = await fetch(`http://localhost:3000/api/getProjects/`);
-  const data = await res.json();
-  const projects: Projects[] = data.projects;
-
+const fetchProjects = async () => {
+  const query = groq`
+    *[_type == "project"] {
+      title,
+      description,
+      slug,
+      body,
+      coverimage {
+        asset-> {
+          url,
+          _id
+        }
+      },
+      techStack[],
+      site
+    }
+  `;
+  
+  const projects: Projects[] = await client.fetch(query);
   return projects;
 };
 
-export const fetchPosts = async () => {
-  const res = await fetch(`http://localhost:3000/api/getPosts/`);
-  const data = await res.json();
-  const posts: Post[] = data.posts;
-
+const fetchPosts = async () => {
+  const query = groq`
+    *[_type == "post"] | order(publishedAt desc) {
+      _id,
+      title,
+      author -> {
+        name,
+        image {
+          asset-> {
+            _id,
+            url
+          }
+        }
+      },
+      description,
+      slug,
+      mainImage {
+        asset -> {
+          _id,
+          url
+        }
+      }
+    }
+  `;
+  
+  const posts: Post[] = await client.fetch(query);
   return posts;
 };
 
-export const fetchPost = async () => {
-  const res = await fetch(`http://localhost:3000/api/getPost/`);
-  const data = await res.json();
-  const post: Post[] = data.post;
-
-  return post;
+export {
+  fetchHome,
+  fetchAbout,
+  fetchFeatures,
+  fetchTechStack,
+  fetchProjects,
+  fetchPosts
 };

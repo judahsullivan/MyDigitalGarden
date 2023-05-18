@@ -7,6 +7,20 @@ import BlogIndex from '@/components/garden/blog/blogIndex';
 import Repositories from '@/components/garden/github/repositories';
 import { fetchRecentRepos } from '@/lib/fetchGitHub';
 
+export async function getStaticProps() {
+  const posts = await fetchPosts();
+  const repositories = await fetchRecentRepos();
+
+  return {
+    props: {
+      posts,
+      repositories
+    },
+    revalidate: 3000 * 3000
+  };
+}
+
+
 export default function Garden({ posts,repositories }: GardenProps ) {
 const title='My Digital Garden🏡' 
 const subtitle ='This is where all the magic happens✨. Where I Blog✍🏾 and always show whats going on up-to-date ⬆️, in my life whether its programming, or my personal life🙌🏾. Hope you Enjoy!💖 '
@@ -45,19 +59,6 @@ const subtitle ='This is where all the magic happens✨. Where I Blog✍🏾 and
     </PageLayout>
   );
 }
-
-export async function getStaticProps() {
-  const posts = await fetchPosts();
-  const repositories = await fetchRecentRepos();
-
-  return {
-    props: {
-      posts,
-      repositories
-    },
-  };
-}
-
 
 
 
