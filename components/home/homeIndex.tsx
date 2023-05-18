@@ -53,6 +53,9 @@ export async function getStaticProps(){
   }
 }
 const ANIMATION_DURATION = 0.5;
+
+
+
 const Home = ({home}: any) => {
 const color=useColorModeValue('#f0e7db', '#202023')
 const bg=useColorModeValue('#202023', '#f0e7db')

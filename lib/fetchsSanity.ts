@@ -3,15 +3,15 @@ import { groq } from 'next-sanity';
 
 const fetchHome = async () => {
   const query = groq`
-    *[_type == "home"] {
-     title,
+*[_type == "homepage"]{
+    title,
       role,
       "image": image.asset -> url,
       description,
       specialize
+}
+`;
 
-    }
-  `;
   
   const home: HomePage[] = await client.fetch(query);
   return home;
