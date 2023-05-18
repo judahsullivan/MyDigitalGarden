@@ -22,6 +22,8 @@ export async function getStaticProps(){
 export default function  About  ({ about }: any )  {
 const color=useColorModeValue('#202023', '#f0e7db')
 const bg= useColorModeValue('#202023', '#f0e7db')
+const title='Heres a little about me!'
+          
   return (
     <Container maxW={'7xl'} mt={{base: '8rem', md: '3rem' }} >
       <MotionBox
@@ -39,16 +41,14 @@ const bg= useColorModeValue('#202023', '#f0e7db')
           },
         }}
       >
-        <Badge
-          color={useColorModeValue('#f0e7db', '#202023')}
-          bg={useColorModeValue('#202023', '#f0e7db')}
+        <Box
           lineHeight={1.1}
           textTransform={'capitalize'}
           fontWeight={600}
           fontSize={{ base: 'xl', sm: '2xl', lg: '3xl' }}
         >
-          Heres a little about me!
-        </Badge>
+        {title}
+        </Box>
       </MotionBox>
            {about.map((about: any,index: any)=>(
            <Stack
@@ -72,7 +72,7 @@ const bg= useColorModeValue('#202023', '#f0e7db')
                     delay: 0.5
                   }
                 }}
-                fontWeight={600}
+                fontWeight={500}
                 height={{ base: 'auto', md: '257px' }}
                 color={color}
                 wordBreak={'keep-all'}

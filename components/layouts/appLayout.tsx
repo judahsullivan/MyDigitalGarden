@@ -14,15 +14,13 @@ export default function AppLayout(props: any) {
       <Navbar />
       <Box
         overflow={'hidden'}
-        p={4}
-        textAlign="center"
-        fontSize="xl"
         w={'100%'}
-        maxW={950}
-        mx="auto"
-        my={'auto'}
+        h={'full'}
+        maxW={900}
+        mx={'auto'}
+        p={5}
       >
-        <Box pt={'4rem'} key={router.route}>
+        <Box mt={'4rem'} pb={-5} key={router.route}>
           {props.children}
           </Box>
       </Box>

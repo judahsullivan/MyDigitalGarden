@@ -3,7 +3,6 @@
 
 export interface HomeProps{
   home:  HomePage[];
-  about: AboutSection[];
   features: FeatureSection[];
 }
 
@@ -13,6 +12,7 @@ export interface ProjectsProps {
 
 
 export interface GardenProps{
+  about: AboutSection[];
   repositories: GitHubRepository[];
   posts: Post[]
 }

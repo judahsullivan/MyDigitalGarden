@@ -27,18 +27,13 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <MotionBox variants={list}  >
+    <MotionBox py={'auto'} w={'100%'} variants={list} >
       <VStack
-        m={0}
         bg={useColorModeValue('#202023', '#f0e7db')}
         color={useColorModeValue('#f0e7db', '#202023')}
         p={2}
-        align={'center'}
-        spacing={2}
-        h={180}
-        justify={'space-between'}
-        maxW={200}
-        border={'1px solid '}
+        h={170}
+        maxW={190}
         rounded="lg"
         _hover={{
           boxShadow: useColorModeValue(
