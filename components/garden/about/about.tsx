@@ -25,37 +25,21 @@ const bg= useColorModeValue('#202023', '#f0e7db')
 const title='Heres a little about me!'
           
   return (
-    <Container maxW={'7xl'} mt={{base: '8rem', md: '3rem' }} >
-      <MotionBox
-        initial={{
-          opacity: 0,
-          scale: 0
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-          transition: {
-            duration: 1,
-            type: 'spring',
-            stiffness: 250
-          },
-        }}
-      >
-        <Box
+    <Container maxW={'5xl'}  >
+      <Box
           lineHeight={1.1}
           textTransform={'capitalize'}
           fontWeight={600}
-          fontSize={{ base: 'xl', sm: '2xl', lg: '3xl' }}
+          fontSize={'3xl'}
+          width={'100%'}
         >
         {title}
         </Box>
-      </MotionBox>
            {about.map((about: any,index: any)=>(
            <Stack
             key={index}
             align={'center'}
             spacing={{ base: 3, md: 10 }}
-            py={{ base: 6, md: 8 }}
             direction={{ base: 'column', md: 'row' }}
           >
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>

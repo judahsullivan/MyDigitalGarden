@@ -1,7 +1,6 @@
 import { fetchProjects } from "@/lib/fetchsSanity";
-import { VStack } from "@chakra-ui/react";
+import { VStack,Container } from "@chakra-ui/react";
 import { Fragment } from "react";
-import { PageSlideFade } from "../animations/motion/transition";
 import { ProjectLayoutMed, LeftProjectLayoutLarge, RightProjectLayoutLarge } from "./projectLayout";
 
 
@@ -21,7 +20,7 @@ export async function getStaticProps(){
 
 export default function ProjectIndex({projects}: any ){
     return(
-    <PageSlideFade>
+    <Container maxW={"5xl"} p={2} >
         <VStack spacing={8} mt={['7', '7', '0']}>
             {projects.map((project: any, index: any) => (
               <Fragment key={index}>
@@ -34,7 +33,7 @@ export default function ProjectIndex({projects}: any ){
               </Fragment>
             ))}
         </VStack>
-      </PageSlideFade>
+      </Container>
 
     )
 }

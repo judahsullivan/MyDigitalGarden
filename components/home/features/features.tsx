@@ -24,9 +24,9 @@ const Features  = ({ features }: any) => {
   const title = "Technologies💻"
   const subtitle = "These are the Technologies  are being used to power my portfolio!🔋 "
   return (
-    <Container mt={5} p={8} maxW={"3xl"} overflow={'hidden'}> 
+    <Box maxW={"4xl"}   overflow={'hidden'}> 
        <MotionBox
-        align={"center"}
+          align={"center"}
           initial={{
             opacity: 0,
             y: 100
@@ -38,14 +38,17 @@ const Features  = ({ features }: any) => {
               duration: .5
             }
           }}
-          fontSize={{ base: '2xl', md: '3xl' }}
-        >   <Box textAlign={{ base: 'center', md: 'left' }} cursor="pointer">
-              <Box
+        >
+        <Box 
+        textAlign={'left' }>
+             <Box
+              fontSize="4xl"
               textDecoration={"underline"}
               >
                 {title}
               </Box>
                 <Box
+                lineHeight={1.1}
                 fontSize={{base: 'lg', md: 'lg'  }} 
                 >
                 {subtitle}
@@ -56,6 +59,7 @@ const Features  = ({ features }: any) => {
           variants={container}
           whileInView={'visible'}
           initial={'hidden'}
+          mt={7}
           >
         <SimpleGrid columns={[2, 2, 3]} spacing={2}>
            {features.map((feature: any,index:any) => ( 
@@ -71,7 +75,7 @@ const Features  = ({ features }: any) => {
               ))}
         </SimpleGrid>
         </MotionBox>
-    </Container>
+    </Box>
   );
 };
 

@@ -15,12 +15,11 @@ export default function AppLayout(props: any) {
       <Box
         overflow={'hidden'}
         w={'100%'}
-        h={'full'}
         maxW={900}
         mx={'auto'}
         p={5}
       >
-        <Box mt={'4rem'} pb={-5} key={router.route}>
+        <Box h={'full'} mt={'4rem'} pb={-5} key={router.route}>
           {props.children}
           </Box>
       </Box>

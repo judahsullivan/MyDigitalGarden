@@ -1,4 +1,4 @@
-import { Stack, IconButton, Link, Box, Text, useColorModeValue, Flex } from '@chakra-ui/react';
+import { Stack, IconButton, Link, Box, HStack, useColorModeValue, Flex } from '@chakra-ui/react';
 import siteConfig from './site-config';
 
 const iconProps = {
@@ -12,26 +12,22 @@ const Footer = () => {
     <Stack
       as="footer"
       isInline
-      spacing={[1, 2]}
-      p={4}
       justifyContent="space-between"
       alignItems="center"
       w={['100%', '85%', '80%']}
-      maxW={800}
+      maxW={900}
       mx="auto"
     >
       <Flex
-        flexDirection={['column', 'column', 'row']}
-        flexFlow={['column-reverse', 'column-reverse']}
         justifyContent={['center', 'space-between']}
         alignItems="center"
         w="100%"
       >
         {/* <HStack> */}
-        <Text textAlign="center" fontSize="sm" color={useColorModeValue('gray.500', 'gray.200')}>
-          © {new Date().getFullYear()} Judah B. Sullivan{' '}
-        </Text>
-        <Box textAlign="center">
+        <Box letterSpacing={'tighter'} textAlign="center" fontSize="md" >
+          © {new Date().getFullYear()} Judah B. Sullivan
+        </Box>
+        <HStack ml={4} spacing={-3} >
           {siteConfig.author.accounts.map((sc, index) => (
             <IconButton
               key={index}
@@ -44,7 +40,7 @@ const Footer = () => {
               {...iconProps}
             />
           ))}
-        </Box>
+        </HStack>
       </Flex>
     </Stack>
   );

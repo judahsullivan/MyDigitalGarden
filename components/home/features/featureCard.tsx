@@ -27,13 +27,13 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <MotionBox py={'auto'} w={'100%'} variants={list} >
+    <MotionBox   variants={list} >
       <VStack
         bg={useColorModeValue('#202023', '#f0e7db')}
         color={useColorModeValue('#f0e7db', '#202023')}
         p={2}
-        h={170}
-        maxW={190}
+        h={190}
+        maxW={200}
         rounded="lg"
         _hover={{
           boxShadow: useColorModeValue(
@@ -43,9 +43,9 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
         }}
       >
         <Avatar src={image} bgColor={`${color}.200`} p={2} rounded={'full'} />
-        <chakra.h3 fontSize="lg" letterSpacing={3} fontWeight="black" py={4}>
+        <Box  lineHeight={1} fontSize="lg" letterSpacing={3} fontWeight="black" py={4}>
           {title}
-        </chakra.h3>
+        </Box>
         <Tooltip label={label}>
           <Button
             bg={useColorModeValue('#f0e7db', '#202023')}
