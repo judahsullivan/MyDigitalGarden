@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,Fragment } from 'react';
 import { GrTechnology } from 'react-icons/gr';
 import { MdDesignServices, MdDeveloperMode, MdLanguage } from 'react-icons/md';
 import {
@@ -47,7 +47,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
     types = [...new Set([...types, ...techTypes])];
   }
   return (
-      <PageSlideFade>
+      <Fragment>
         <Tabs mt={6} variant="soft-rounded" colorScheme="blue" align="center" w="100%">
           <TabList display="flex" flexWrap="wrap">
             {types.map((type) => (
@@ -115,7 +115,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
               ))}
           </TabPanels>
         </Tabs>
-        </PageSlideFade>
+        </Fragment>
   );
 };
 

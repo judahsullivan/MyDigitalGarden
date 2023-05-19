@@ -33,7 +33,7 @@ export default function GardenIndex({ posts,repositories,about }: GardenProps ) 
         <TabList>
         <Tab
           >
-           🧔🏾‍♂️ About Me
+          🤙🏾Bio
           </Tab>
           <Tab
           >
@@ -42,7 +42,7 @@ export default function GardenIndex({ posts,repositories,about }: GardenProps ) 
          
           <Tab
           >
-          🏾💻Repositories
+          💻Repositories
           </Tab>
         </TabList>
 

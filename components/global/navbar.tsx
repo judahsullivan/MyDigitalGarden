@@ -19,10 +19,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { ImProfile } from 'react-icons/im'
 import { MdTimeline } from 'react-icons/md'
 import ThemeToggleButton from './theme-toggle-button'
-import { MagicLink, MotionMagicLink } from '../shared/magic'
+import { MagicLink,MotionMagicLink } from '../shared/magic'
 import ResumeButton from './resumebutton'
-import { GrTechnology } from 'react-icons/gr'
-import { FaBlog } from 'react-icons/fa'
+import { BsStack } from 'react-icons/bs'
+import { ImBlog } from 'react-icons/im'
+import {MotionBox} from '../animations/motion/motion'
+
 const webLinks = [
 
   { name: 'Projects', path: '/projects' },
@@ -60,18 +62,24 @@ interface MenuLinkProps {
 const MenuLink = (props: MenuLinkProps) => {
   const iconsObj: any = {
     '/projects': <Icon as={MdTimeline} size={18}  />,
-    '/techStack': <Icon as={GrTechnology} size={18}  />,
-    '/garden': <Icon as={FaBlog} size={18}  />,
+    '/garden': <Icon as={ImBlog} size={18}  />,
     '/contact': <Icon as={AiFillContacts} size={18}  />,
+    '/techStack': <Icon as={BsStack} size={18}  />,
   };
 
   return (
-    <MagicLink href={props.path} passHref
+    <MagicLink
+      href={props.path} passHref
       onClick={() => props.onClose()}>
-        <MenuItem >
-          <HStack align={'center'} ml={4}>
+        <MenuItem 
+          bg={useColorModeValue( '#202023','#f0e7db')}
+        >
+          <HStack
+          align={'center'}
+          ml={4}>
             {iconsObj[props.path] }
-            <Text>{props.name}</Text>
+            <Text
+           >{props.name}</Text>
           </HStack>
         </MenuItem>
     </MagicLink>
@@ -81,21 +89,20 @@ const MenuLink = (props: MenuLinkProps) => {
 const NavLink = (props: NavLinkProps) => {
 
   return (
-    <MotionMagicLink
+    <MagicLink
       href={props.path}
       passHref
       px={3}
       py={1}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: .9 }}
       _hover={{
-      bg: useColorModeValue( 'whiteAlpha.900','blackAlpha.800'),
       color: useColorModeValue('#202023', '#f0e7db'),
         borderRadius: 'md'
       }}
     >
+    <MotionBox>
       {props.name}
-    </MotionMagicLink>
+    </MotionBox>
+    </MagicLink>
   )
 }
 
@@ -117,7 +124,7 @@ export default function Navbar() {
 
     <Box
       color={useColorModeValue( '#f0e7db','#202023')}
-      bg={useColorModeValue( 'blackAlpha.800','whiteAlpha.900')}
+      bg={menucolor}
       px={6}
       boxShadow={'lg'}
       position={'fixed'}
@@ -143,8 +150,8 @@ export default function Navbar() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: .9 }}
         _hover={{
-      bg: useColorModeValue( 'whiteAlpha.900','blackAlpha.800'),
-      color: useColorModeValue('#202023', '#f0e7db'),
+          bg: useColorModeValue( 'whiteAlpha.900','blackAlpha.800'),
+          color: useColorModeValue('#202023', '#f0e7db'),
         borderRadius: 'md'
       }}
         >
@@ -169,11 +176,14 @@ export default function Navbar() {
           ))}
 
         </HStack>
-        <Flex justify={'center'} align={'center'}>
+        <Flex
+        justify={'center'} 
+        align={'center'}>
         <ResumeButton  />
         <ThemeToggleButton />
           <Menu autoSelect={false} 
-          isLazy>
+          isLazy
+          >
             {({ isOpen, onClose }) => (
               <>
                 <MenuButton
@@ -188,16 +198,15 @@ export default function Navbar() {
                   rounded={'md'}
                 >
                   <Icon
-                  alignSelf={'center'}
+                    alignSelf={'center'}
                     as={GiHamburgerMenu}
                     transition={'all .25s ease-in-out'}
                     transform={isOpen ? 'rotate(180deg)' : ''}
                   />
                 </MenuButton>
                 <MenuList
-                color={menucolor}
+                  bg={menucolor}
                   zIndex={5}
-                  border="none"
                 >
                   {mobileLinks.map((link, index) => (
                     <MenuLink

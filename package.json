@@ -37,9 +37,8 @@
     "react-icons": "^4.8.0",
     "react-palette": "^1.0.2",
     "react-progressive-graceful-image": "^0.7.0",
-    "react-rough-notation": "^1.0.3",
     "sanity": "^3.10.0",
-    "sanity-plugin-vercel-deploy": "^3.3.3",
+    "sanity-plugin-dashboard-widget-netlify": "^2.0.1",
     "styled-components": "^6.0.0-rc.1",
     "typescript": "5.0.4"
   }
