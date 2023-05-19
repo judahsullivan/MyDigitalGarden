@@ -89,20 +89,22 @@ const MenuLink = (props: MenuLinkProps) => {
 const NavLink = (props: NavLinkProps) => {
 
   return (
-    <MagicLink
+    <MotionMagicLink
       href={props.path}
       passHref
       px={3}
       py={1}
-      _hover={{
-      color: useColorModeValue('#202023', '#f0e7db'),
+     _hover={{
+          bg: useColorModeValue( 'whiteAlpha.900','blackAlpha.800'),
+          color: useColorModeValue('#202023', '#f0e7db'),
         borderRadius: 'md'
       }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: .9 }}
+ 
     >
-    <MotionBox>
       {props.name}
-    </MotionBox>
-    </MagicLink>
+    </MotionMagicLink>
   )
 }
 

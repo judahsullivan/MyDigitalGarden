@@ -186,7 +186,6 @@ const light = useColorModeValue('#202023', '#f0e7db')
       >
         <MotionBox
           rounded={'lg'}
-          opacity={'.8'}
           p={2}
           bg={light}
           align={'center'}
@@ -276,7 +275,6 @@ const light = useColorModeValue('#202023', '#f0e7db')
       >
         <MotionBox
           rounded={'lg'}
-          opacity={'.8'}
           p={2}
           bg={light}
           align={'center'}

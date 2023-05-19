@@ -22,6 +22,12 @@ const ThemeToggleButton = () => {
           variant={'ghost'}
           icon={useColorModeValue(<BiSun />, <BiMoon />)}
           onClick={toggleColorMode}
+          _hover={{
+          bg: useColorModeValue( 'whiteAlpha.900','blackAlpha.800'),
+          color: useColorModeValue('#202023', '#f0e7db'),
+        borderRadius: 'md'
+      }}
+
        />
       </motion.div>
     </AnimatePresence>

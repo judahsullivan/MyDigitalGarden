@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { MotionBox, MotionFlex } from '../animations/motion/motion';
 import { FiGithub, FiPhone } from 'react-icons/fi';
-import { SiLinkedin} from 'react-icons/si';
+import { SiLinkedin, SiYoutube} from 'react-icons/si';
 import { MagicLink  } from '../shared/magic';
 import Features from './features/features';
 import { fetchFeatures, fetchHome } from '@/lib/fetchsSanity';
@@ -28,8 +28,13 @@ const iconslinks = [
     link: '/contact'
   },
   {
+    icon: SiYoutube,
+    link: 'https://.youtube.com/channel/UCQDPEaS3UUstGotV8JAEc9A',
+    target: '_blank'
+  },
+  {
     icon: SiLinkedin,
-    link: 'https://www.youtube.com/channel/UCQDPEaS3UUstGotV8JAEc9A',
+    link: 'https://www.linkedin.com/in/judahsullivan/',
     target: '_blank'
   },
   {
@@ -94,12 +99,9 @@ const bg=useColorModeValue('#202023', '#f0e7db')
                   <Flex
                     align="center"
                     justify={"space-between"}
-                   cursor="pointer"
                    direction={{base: 'column', md: 'row'}}
                     >
                    <VStack w={'100%'} spacing={5}>
-                   
-
                    <Box width={"100%"} textAlign={'left'}>
                                       <Box mt={2}>
                      <Box

@@ -17,10 +17,10 @@ export async function getStaticProps(){
     props: {
       techstacks
     },
-    revalidate: 3600
+    revalidate: 3600 * 3600
   };
 }
-const TechStack = ({ techstacks }: TechStackProps) => {
+export default function  TechStack ({ techstacks }: TechStackProps){
  const title = 'TechStack⚙️' 
  const subtitle = "Here are all the technologies I have learned on my Journey to Full Stack!📚 I Make it my goal to learn and gain as much knowledge as possible!🧠 "
   return (
@@ -40,4 +40,3 @@ const TechStack = ({ techstacks }: TechStackProps) => {
 
 
 
-export default TechStack;
