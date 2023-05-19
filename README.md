@@ -1,7 +1,9 @@
+# Welcome to my [Developer Portfolio/MyDigitalGarden ](https://devjbyrd.com)
+![homepage ](./assets/images/1.png)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5724add7-4014-4ae0-ba65-2e398eca5093/deploy-status)](https://app.netlify.com/sites/beamish-raindrop-7b2750/deploys)
 
 ##  HI There!🤙🏾
 
-### Welcome to my [Developer Portfolio/MyDigitalGarden ](https://devjbyrd.com)
 
 #### Here is a brief overview 
 
@@ -21,11 +23,13 @@ All data is being fed from my Sanity backend, which I embedded and also using IS
 
 
 ####  Screenshots
+![Project Page](./assets/images/2.png)
 
+![TechStack Page](./assets/images/3.png)
 
+![Garden Page](./assets/images/4.png)
 
-
-
+![Contact Page](./assets/images/5.png)
 ## Want to try it out? 
 
 ## Here are the instructions 
@@ -62,7 +66,6 @@ If you use my template, any personal information needs to come off!
 #Thanks
 
 I do hope you enjoy the template. I put a tremendous effort towards this project and would love all the feed back i can get. 
-
 
 
 
