@@ -1,5 +1,5 @@
 # Welcome to my [Developer Portfolio/MyDigitalGarden ](https://devjbyrd.com)
-![homepage ](./assets/images/1.png)
+![homepage ](public/assets/images/1.png)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5724add7-4014-4ae0-ba65-2e398eca5093/deploy-status)](https://app.netlify.com/sites/beamish-raindrop-7b2750/deploys)
 
 ##  HI There!🤙🏾
@@ -63,7 +63,7 @@ Step 7: Once you completed this step your almost done. Now you can access your s
 If you use my template, any personal information needs to come off! 
 
 
-#Thanks
+##Thanks
 
 I do hope you enjoy the template. I put a tremendous effort towards this project and would love all the feed back i can get. 
 
