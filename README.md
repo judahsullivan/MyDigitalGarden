@@ -23,13 +23,13 @@ All data is being fed from my Sanity backend, which I embedded and also using IS
 
 
 ####  Screenshots
-![Project Page](.public/assets/images/2.png)
+![Project Page](public/assets/images/2.png)
 
-![TechStack Page](.public/assets/images/3.png)
+![TechStack Page](public/assets/images/3.png)
 
-![Garden Page](.public/assets/images/4.png)
+![Garden Page](public/assets/images/4.png)
 
-![Contact Page](.public/assets/images/5.png)
+![Contact Page](public/assets/images/5.png)
 ## Want to try it out? 
 
 ## Here are the instructions 
