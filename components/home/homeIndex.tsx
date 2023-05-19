@@ -155,7 +155,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
                   </Box>
                   
       <MotionFlex
-        mt={10}
+        mt={6}
         gap={6}
         align={'center'}
         initial={{
