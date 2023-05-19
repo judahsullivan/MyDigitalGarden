@@ -24,13 +24,15 @@ import { MotionBox } from '../../animations/motion/motion';
 import {list} from '@/components/animations/motion/transition'
 
 const FeatureCard = ({ title, color, image, content, label, href }: any) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const card =   useColorModeValue('#202023', '#f0e7db') 
+const text=    useColorModeValue('#f0e7db', '#202023') 
+ const { isOpen, onOpen, onClose } = useDisclosure();
 
-  return (
+      return (
     <MotionBox   variants={list} >
       <VStack
-        bg={useColorModeValue('#202023', '#f0e7db')}
-        color={useColorModeValue('#f0e7db', '#202023')}
+        bg={card}
+        color={text}
         p={2}
         h={190}
         maxW={200}
@@ -48,15 +50,15 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
         </Box>
         <Tooltip label={label}>
           <Button
-            bg={useColorModeValue('#f0e7db', '#202023')}
-            color={useColorModeValue('#202023', '#f0e7db')}
+            bg={text}
+            color={card}
             onClick={onOpen}
           >
             Read More
           </Button>
         </Tooltip>
       </VStack>
-      <Modal isOpen={isOpen} onClose={onClose} size={'sm'} isCentered>
+      <Modal bg={card}  isOpen={isOpen} onClose={onClose} size={'sm'} isCentered>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
@@ -74,7 +76,14 @@ const FeatureCard = ({ title, color, image, content, label, href }: any) => {
             </Box>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button
+            bg={card}
+            color={text}
+         _hover={{
+          bg: text,
+          color: card  ,
+      }}
+            mr={3} onClick={onClose}>
               Close
             </Button>
           </ModalFooter>
