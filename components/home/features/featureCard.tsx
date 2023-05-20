@@ -58,7 +58,7 @@ const text=    useColorModeValue('#f0e7db', '#202023')
           </Button>
         </Tooltip>
       </VStack>
-      <Modal bg={card}  isOpen={isOpen} onClose={onClose} size={'sm'} isCentered>
+      <Modal isOpen={isOpen} onClose={onClose} size={'sm'} isCentered>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
