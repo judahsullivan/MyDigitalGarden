@@ -103,7 +103,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
                     >
                    <VStack w={'100%'} spacing={5}>
                    <Box width={"100%"} textAlign={'left'}>
-                                      <Box mt={2}>
+                                    
                      <Box
                      letterSpacing={4}
                      fontSize="2xl"
@@ -118,7 +118,7 @@ const bg=useColorModeValue('#202023', '#f0e7db')
                      {home.role}
 
                      </Box>
-                     </Box>
+        
                       </Box>
                    </VStack> 
 
