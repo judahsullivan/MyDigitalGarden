@@ -29,7 +29,7 @@ const iconslinks = [
   },
   {
     icon: SiYoutube,
-    link: 'https://.youtube.com/channel/UCQDPEaS3UUstGotV8JAEc9A',
+    link: 'https://www.youtube.com/@devjbyrd',
     target: '_blank'
   },
   {
