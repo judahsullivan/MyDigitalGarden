@@ -81,14 +81,13 @@ const Project = ({ project }: Props) => {
   return (
     <PageLayout title={project.title}>
       <VStack w={'100%'} p={5} align={'start'} textAlign={'center'}>
-        <MagicLink passHref href={'/projects'}>
+        <MagicLink passHref href={'/'}>
           <MotionBox
             w={'100%'}
             align={'start'}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            {' '}
             <Button
               color={color}
               bg={bg}
