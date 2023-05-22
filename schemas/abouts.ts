@@ -1,4 +1,4 @@
-import {defineType} from 'sanity'
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'aboutsection',
@@ -8,20 +8,20 @@ export default defineType({
     {
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
-        hotspot: true,
-      },
-    },
-  ],
-})
+        hotspot: true
+      }
+    }
+  ]
+});

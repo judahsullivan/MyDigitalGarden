@@ -12,7 +12,6 @@ const fetchHome = async () => {
 }
 `;
 
-  
   const home: HomePage[] = await client.fetch(query);
   return home;
 };
@@ -26,7 +25,7 @@ const fetchAbout = async () => {
       description
     }
   `;
-  
+
   const about: AboutSection[] = await client.fetch(query);
   return about;
 };
@@ -42,7 +41,7 @@ const fetchFeatures = async () => {
       color
     }
   `;
-  
+
   const features: FeatureSection[] = await client.fetch(query);
   return features;
 };
@@ -57,7 +56,7 @@ const fetchTechStack = async () => {
       type
     }
   `;
-  
+
   const techstacks: TechStack[] = await client.fetch(query);
   return techstacks;
 };
@@ -79,7 +78,7 @@ const fetchProjects = async () => {
       site
     }
   `;
-  
+
   const projects: Projects[] = await client.fetch(query);
   return projects;
 };
@@ -108,16 +107,9 @@ const fetchPosts = async () => {
       }
     }
   `;
-  
+
   const posts: Post[] = await client.fetch(query);
   return posts;
 };
 
-export {
-  fetchHome,
-  fetchAbout,
-  fetchFeatures,
-  fetchTechStack,
-  fetchProjects,
-  fetchPosts
-};
+export { fetchHome, fetchAbout, fetchFeatures, fetchTechStack, fetchProjects, fetchPosts };

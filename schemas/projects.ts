@@ -33,8 +33,8 @@ export default {
       title: 'Cover Image',
       type: 'image',
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     },
     {
       name: 'description',
@@ -44,7 +44,7 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'blockContent'
     },
     {
       name: 'techStack',
@@ -53,4 +53,4 @@ export default {
       of: [{ type: 'string' }]
     }
   ]
-}
+};

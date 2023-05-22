@@ -78,19 +78,16 @@ export const list = {
   hidden: { translateX: 150, opacity: 0 },
   visible: {
     translateX: 0,
-    opacity: 1,
-    
+    opacity: 1
   }
-}
+};
 
 export const item = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
-    opacity: 1,
-    
+    opacity: 1
   }
-
 };
 
 interface Props {
@@ -118,4 +115,3 @@ export const StaggerChildren = ({ children }: Props) => {
 export const CardTransition = ({ children }: Props) => {
   return <MotionBox variants={variants}>{children}</MotionBox>;
 };
-

@@ -1,4 +1,3 @@
-
 interface SanityBody {
   _createdAt: string;
   _id: string;
@@ -6,7 +5,7 @@ interface SanityBody {
   _updatedAt: string;
 }
 
- interface HomePage extends SanityBody {
+interface HomePage extends SanityBody {
   id: Key | null | undefined;
   _type: 'homepage';
   title: string;
@@ -16,7 +15,7 @@ interface SanityBody {
   image: string;
 }
 
- interface AboutSection extends SanityBody {
+interface AboutSection extends SanityBody {
   id: Key | null | undefined;
   _type: 'aboutsection';
   title: string;
@@ -24,7 +23,7 @@ interface SanityBody {
   image: string;
 }
 
- interface FeatureSection extends SanityBody {
+interface FeatureSection extends SanityBody {
   [x: string]: Key | null | undefined;
   _type: 'features';
   title: string;
@@ -35,7 +34,7 @@ interface SanityBody {
   color: string;
 }
 
- interface TechStack extends SanityBody {
+interface TechStack extends SanityBody {
   _type: 'techstack';
   title: string;
   description: string;
@@ -44,7 +43,7 @@ interface SanityBody {
   image: string;
 }
 
- interface Projects extends SanityBody {
+interface Projects extends SanityBody {
   body: any;
   _type: 'project';
   id: string;
@@ -57,7 +56,7 @@ interface SanityBody {
   slug: Slug;
 }
 
- interface GitHubRepository {
+interface GitHubRepository {
   [x: string]: string;
   html_url: string;
   stargazers_count: number;
@@ -91,33 +90,33 @@ interface Author extends Base {
 
 interface Image {
   url(): any;
-  _type: "image";
+  _type: 'image';
   asset: Reference;
 }
 
 interface Reference {
   [x: string]: string | undefined;
-  _ref: "string";
-  _type: "reference";
+  _ref: 'string';
+  _type: 'reference';
 }
 
 interface Slug {
-  _type: "slug";
+  _type: 'slug';
   current: string;
 }
 
 interface Block {
   _key: string;
-  _type: "block";
+  _type: 'block';
   children: Span[];
   markDefs: any[];
-  style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
   split: (separator: string | RegExp) => string[];
 }
 
 interface Span {
   _key: string;
-  _type: "span";
+  _type: 'span';
   marks: string[];
   text: string;
 }
@@ -128,11 +127,11 @@ interface Category extends Base {
 }
 
 interface MainImage {
-  _type: "image";
+  _type: 'image';
   asset: Reference;
 }
 
 interface Title {
-  _type: "string";
+  _type: 'string';
   current: string;
 }

@@ -18,16 +18,12 @@ const Footer = () => {
       maxW={900}
       mx="auto"
     >
-      <Flex
-        justifyContent={['center', 'space-between']}
-        alignItems="center"
-        w="100%"
-      >
+      <Flex justifyContent={['center', 'space-between']} alignItems="center" w="100%">
         {/* <HStack> */}
-        <Box letterSpacing={'tighter'} textAlign="center" fontSize="md" >
+        <Box letterSpacing={'tighter'} textAlign="center" fontSize="md">
           © {new Date().getFullYear()} Judah B. Sullivan
         </Box>
-        <HStack ml={4} spacing={-3} >
+        <HStack ml={4} spacing={-3}>
           {siteConfig.author.accounts.map((sc, index) => (
             <IconButton
               key={index}

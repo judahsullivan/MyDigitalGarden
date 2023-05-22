@@ -3,7 +3,7 @@ import { fetchAbout, fetchPosts } from '@/lib/fetchsSanity';
 import { GardenProps } from '@/utils/interface';
 import { fetchRecentRepos } from '@/lib/fetchGitHub';
 import GardenIndex from '@/components/garden/gardenIndex';
-import { Flex,Box } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 
 export async function getStaticProps() {
   const posts = await fetchPosts();
@@ -20,26 +20,19 @@ export async function getStaticProps() {
   };
 }
 
-
-export default function Garden({ posts,repositories,about }: GardenProps ) {
-const title='My Digital Garden🏡' 
-const subtitle ='This is where all the magic happens✨. Where I Blog✍🏾 and always show whats going on up-to-date ⬆️, in my life whether its programming, or my personal life🙌🏾. Hope you Enjoy!💖 '
+export default function Garden({ posts, repositories, about }: GardenProps) {
+  const title = 'My Digital Garden🏡';
+  const subtitle =
+    'This is where all the magic happens✨. Where I Blog✍🏾 and always show whats going on up-to-date ⬆️, in my life whether its programming, or my personal life🙌🏾. Hope you Enjoy!💖 ';
   return (
     <PageLayout title="🏡Garden">
-    <Flex w={'100%'} display='column' gap={4} textAlign={'left'}>
-    <Box fontSize={'3xl'} textDecoration={'underline'} fontWeight={700}>
-    {title}
-    </Box>
-    <Box>
-      {subtitle}
-    </Box>
-    </Flex>
-    <GardenIndex about={about} posts={posts} repositories={repositories} />
+      <Flex w={'100%'} display="column" gap={4} textAlign={'left'}>
+        <Box fontSize={'3xl'} textDecoration={'underline'} fontWeight={700}>
+          {title}
+        </Box>
+        <Box>{subtitle}</Box>
+      </Flex>
+      <GardenIndex about={about} posts={posts} repositories={repositories} />
     </PageLayout>
   );
 }
-
-
-
-
-

@@ -1,25 +1,12 @@
-
-
-
-export interface HomeProps{
-  home:  HomePage[];
+export interface HomeProps {
+  home: HomePage[];
   features: FeatureSection[];
-}
-
-export interface ProjectsProps {
   projects: Projects[];
+  techstacks: TechStack[];
 }
 
-
-export interface GardenProps{
+export interface GardenProps {
+  posts: Post[];
   about: AboutSection[];
-  repositories: GitHubRepository[];
-  posts: Post[]
-}
-
-
-
-
-export interface RepositoryProps{
   repositories: GitHubRepository[];
 }
