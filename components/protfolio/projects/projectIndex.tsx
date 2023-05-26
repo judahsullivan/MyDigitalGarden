@@ -10,7 +10,7 @@ export async function getStaticProps() {
     props: {
       projects
     },
-    revalidate: 3000 * 3000
+    revalidate: 3000
   };
 }
 const title = ' Projects⚒️';
