@@ -4,7 +4,7 @@ import { FaFolder } from 'react-icons/fa';
 const handleDownload = () => {
   const link = document.createElement('a');
   link.download = 'document.docx';
-  link.href = '/assets/JudahSullivan2022.docx';
+  link.href = '/assets/JudahBSullivan-Resume.docx';
   link.click();
 };
 
