@@ -8,7 +8,7 @@ import BlogCard from './blogCard';
 export default function BlogIndex({ posts }: any) {
   const title = 'My Blog';
   const subtitle =
-    'Here are a list of my Blog post. Where I always comprehensively talk about all that I learn, and my personal life.';
+    'Here are a list of my Blog post. Where I comprehensively talk about all that I learn, and my personal life.';
   return (
     <Fragment>
       <PageSlideFade>
