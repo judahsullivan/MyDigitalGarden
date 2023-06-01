@@ -16,7 +16,7 @@ export async function getStaticProps() {
       repositories,
       about
     },
-    revalidate: 3000 * 3000
+    revalidate: 3000
   };
 }
 
